@@ -6,7 +6,7 @@ import textwrap
 import time
 
 import dash_bootstrap_components as dbc
-import spacy
+# import spacy
 from dash import Input, Output, State, html
 from dash_extensions.enrich import DashProxy, MultiplexerTransform
 
@@ -42,7 +42,7 @@ sparql = SPARQLWrapper(host_url)
 sparql.setHTTPAuth(BASIC)
 sparql.setReturnFormat(JSON)
 
-nlp = spacy.load("en_core_web_sm")
+# nlp = spacy.load("en_core_web_sm")
 graph_utils = GraphUtils()
 graph_utils_export = GraphUtils()
 app.title = "Question understanding interface"

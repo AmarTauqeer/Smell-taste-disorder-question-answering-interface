@@ -2,10 +2,10 @@ from pathlib import PurePosixPath
 from urllib.parse import unquote, urlparse
 from layout.graph_utils import Graph
 from thefuzz import fuzz
-import spacy
+# import spacy
 import os
 
-nlp = spacy.load("en_core_web_sm")
+# nlp = spacy.load("en_core_web_sm")
 
 
 def extract_verb_constructions_from_sent(doc):
