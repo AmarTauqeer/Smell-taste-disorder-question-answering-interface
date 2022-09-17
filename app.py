@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+import os
 import re
 import ssl
 import textwrap
@@ -16,7 +17,7 @@ from layout.question_graph_layout import question_graph_layout
 from layout.select_question import question_select
 from layout.view_export_layout import view_export_layout
 
-from SPARQLWrapper import SPARQLWrapper, JSON
+from SPARQLWrapper import SPARQLWrapper, JSON, BASIC
 
 from resources.data import graph_data
 
@@ -33,8 +34,12 @@ update_state_ = "false"
 node_or_edge_ = "node"
 
 # sparql setting
-host_url = "http://95.217.61.124:7200/repositories/question_answers"
+host_url = os.getenv("HOST_URI_GET")
+hostname = host_url
+userid = os.getenv("user_name")
+password = os.getenv("password")
 sparql = SPARQLWrapper(host_url)
+sparql.setHTTPAuth(BASIC)
 sparql.setReturnFormat(JSON)
 
 nlp = spacy.load("en_core_web_sm")
