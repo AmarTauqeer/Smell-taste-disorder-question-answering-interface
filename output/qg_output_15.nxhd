@@ -1,0 +1,11 @@
+<http://en.wikipedia.org/wiki/Gus_Fring>	<http://xmlns.com/foaf/0.1/primaryTopic>	<http://dbpedia.org/resource/Gus_Fring>
+<http://dbpedia.org/resource/Gus_Fring>	<http://xmlns.com/foaf/0.1/isPrimaryTopicOf>	<http://en.wikipedia.org/wiki/Gus_Fring>
+<http://dbpedia.org/resource/Gus_Fring>	<http://www.w3.org/ns/prov#wasDerivedFrom>	<http://en.wikipedia.org/wiki/Gus_Fring?oldid=682943630>
+<http://dbpedia.org/resource/Gus_Fring>	<http://dbpedia.org/ontology/occupation>	<http://dbpedia.org/resource/Methamphetamine>
+<http://dbpedia.org/resource/Gus_Fring>	<http://dbpedia.org/ontology/occupation>	<http://dbpedia.org/resource/Boss_(crime)>
+<http://dbpedia.org/resource/Gus_Fring>	<http://dbpedia.org/ontology/creator>	<http://dbpedia.org/resource/Vince_Gilligan>
+<http://dbpedia.org/resource/Gus_Fring>	<http://dbpedia.org/ontology/portrayer>	<http://dbpedia.org/resource/Giancarlo_Esposito>
+<http://dbpedia.org/resource/Gus_Fring>	<http://dbpedia.org/ontology/lastAppearance>	<http://dbpedia.org/resource/Face_Off_(Breaking_Bad)>
+<http://dbpedia.org/resource/Gus_Fring>	<http://dbpedia.org/ontology/series>	<http://dbpedia.org/resource/Breaking_Bad>
+<http://dbpedia.org/resource/Gus_Fring>	<http://dbpedia.org/ontology/lastAppearance>	<http://dbpedia.org/resource/Face_Off_(Breaking_Bad)>
+<http://dbpedia.org/resource/Gus_Fring>	<http://dbpedia.org/ontology/series>	<http://dbpedia.org/resource/Breaking_Bad>

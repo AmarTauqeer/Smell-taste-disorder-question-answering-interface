@@ -1,0 +1,9 @@
+version: "3"
+services:
+  disorder:
+    container_name: disorder
+    hostname: disorder
+    restart: always
+    build: ./
+    ports:
+      - 8050:5000

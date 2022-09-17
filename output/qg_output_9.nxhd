@@ -1,0 +1,14 @@
+<http://dbpedia.org/resource/DBpedia>	<http://dbpedia.org/ontology/developer>	<http://dbpedia.org/resource/Leipzig_University>
+<http://dbpedia.org/resource/DBpedia>	<http://dbpedia.org/ontology/developer>	<http://dbpedia.org/resource/University_of_Mannheim>
+<http://dbpedia.org/resource/DBpedia>	<http://dbpedia.org/ontology/developer>	<http://dbpedia.org/resource/OpenLink_Software>
+<http://dbpedia.org/resource/Spotlight>	<http://dbpedia.org/ontology/wikiPageDisambiguates>	<http://dbpedia.org/resource/DBpedia>
+<http://en.wikipedia.org/wiki/DBpedia>	<http://xmlns.com/foaf/0.1/primaryTopic>	<http://dbpedia.org/resource/DBpedia>
+<http://dbpedia.org/resource/DBpedia>	<http://xmlns.com/foaf/0.1/isPrimaryTopicOf>	<http://en.wikipedia.org/wiki/DBpedia>
+<http://dbpedia.org/resource/DBpedia>	<http://www.w3.org/ns/prov#wasDerivedFrom>	<http://en.wikipedia.org/wiki/DBpedia?oldid=680218220>
+<http://dbpedia.org/resource/DBpedia>	<http://xmlns.com/foaf/0.1/homepage>	<http://dbpedia.org>
+<http://dbpedia.org/resource/DBpedia>	<http://dbpedia.org/ontology/developer>	<http://dbpedia.org/resource/Leipzig_University>
+<http://dbpedia.org/resource/DBpedia>	<http://dbpedia.org/ontology/developer>	<http://dbpedia.org/resource/University_of_Mannheim>
+<http://dbpedia.org/resource/DBpedia>	<http://dbpedia.org/ontology/developer>	<http://dbpedia.org/resource/OpenLink_Software>
+<http://dbpedia.org/resource/DBpedia>	<http://dbpedia.org/ontology/genre>	<http://dbpedia.org/resource/Semantic_Web>
+<http://dbpedia.org/resource/DBpedia>	<http://dbpedia.org/ontology/genre>	<http://dbpedia.org/resource/Linked_data>
+<http://dbpedia.org/resource/DBpedia>	<http://dbpedia.org/property/wordnet_type>	<http://www.w3.org/2006/03/wn/wn20/instances/synset-software-noun-1>

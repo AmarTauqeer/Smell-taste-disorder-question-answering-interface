@@ -1,0 +1,92 @@
+
+<http://example/base/102090> <http://example/base/hasDisorder> <http://example/base/Disorder> .
+<http://example/base/102090> <http://example/base/take> <http://example/base/Medication> .
+<http://example/base/102090> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://example/base/Patient> .
+<http://example/base/102090> <http://example/base/genderType> <Man> .
+<http://example/base/102090> <http://example/base/get> <http://example/base/Therapy> .
+<http://example/base/102090> <http://example/base/hasBMIValue> <2515650942650346> .
+<http://example/base/102090> <http://example/base/hasDisorder> <http://example/base/Disorder> .
+<http://example/base/102090> <http://example/base/hasHeightValue> <1865> .
+<http://example/base/102090> <http://example/base/take> <http://example/base/Medication> .
+<http://example/base/102090> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://example/base/Patient> .
+<http://example/base/101670> <http://example/base/hasDisorder> <http://example/base/Disorder> .
+<http://example/base/Disorder> <http://example/base/hasEtiology> <http://example/base/Etiology> .
+<http://example/base/Etiology> <http://example/base/hasValue> <Toxic/drugs> .
+<http://example/base/Disorder> <http://example/base/hasType> <http://example/base/SmellDisorder> .
+<http://example/base/SmellDisorder> <http://example/base/value> <anosmia> .
+<http://example/base/Disorder> <http://example/base/hasType> <http://example/base/TasteDisorder> .
+<http://example/base/TasteDisorder> <http://example/base/value> <Normogeusia> .
+<http://example/base/102090> <http://example/base/hasHeightValue> <165> .
+<http://example/base/102090> <http://example/base/take> <http://example/base/Medication> .
+<http://example/base/Medication> <http://example/base/hasValue> <Immunosuppressiva> .
+<http://example/base/Medication> <http://example/base/hasValue> <Neuro_medicatie> .
+
+
+
+<http://example/base/114410> <http://example/base/hasDisorder> <http://example/base/Disorder> .
+<http://example/base/114410> <http://example/base/take> <http://example/base/Medication> .
+<http://example/base/114410> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://example/base/Patient> .
+<http://example/base/114410> <http://example/base/genderType> <Woman> .
+<http://example/base/114410> <http://example/base/get> <http://example/base/Therapy> .
+<http://example/base/114410> <http://example/base/hasBMIValue> <23225431847873424> .
+<http://example/base/114410> <http://example/base/hasDisorder> <http://example/base/Disorder> .
+<http://example/base/114410> <http://example/base/hasHeightValue> <166> .
+<http://example/base/114410> <http://example/base/take> <http://example/base/Medication> .
+<http://example/base/114410> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://example/base/Patient> .
+<http://example/base/114410> <http://example/base/hasDisorder> <http://example/base/Disorder> .
+<http://example/base/Disorder> <http://example/base/hasEtiology> <http://example/base/Etiology> .
+<http://example/base/Etiology> <http://example/base/hasValue> <Trauma> .
+<http://example/base/Disorder> <http://example/base/hasType> <http://example/base/SmellDisorder> .
+<http://example/base/SmellDisorder> <http://example/base/value> <normosmia> .
+<http://example/base/Disorder> <http://example/base/hasType> <http://example/base/TasteDisorder> .
+<http://example/base/TasteDisorder> <http://example/base/value> <Normogeusia> .
+<http://example/base/114410> <http://example/base/hasHeightValue> <165> .
+<http://example/base/114410> <http://example/base/take> <http://example/base/Medication> .
+<http://example/base/Medication> <http://example/base/hasValue> <Astmamedicatie> .
+<http://example/base/Medication> <http://example/base/hasValue> <Neuro_medicatie> .
+
+
+
+<http://example/base/118190> <http://example/base/hasDisorder> <http://example/base/Disorder> .
+<http://example/base/118190> <http://example/base/take> <http://example/base/Medication> .
+<http://example/base/118190> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://example/base/Patient> .
+<http://example/base/118190> <http://example/base/genderType> <Man> .
+<http://example/base/118190> <http://example/base/get> <http://example/base/Therapy> .
+<http://example/base/118190> <http://example/base/hasBMIValue> <27776910832995224> .
+<http://example/base/118190> <http://example/base/hasDisorder> <http://example/base/Disorder> .
+<http://example/base/118190> <http://example/base/hasHeightValue> <179> .
+<http://example/base/118190> <http://example/base/take> <http://example/base/Medication> .
+<http://example/base/118190> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://example/base/Patient> .
+<http://example/base/118190> <http://example/base/hasDisorder> <http://example/base/Disorder> .
+<http://example/base/Disorder> <http://example/base/hasEtiology> <http://example/base/Etiology> .
+<http://example/base/Etiology> <http://example/base/hasValue> <Chronic rhinosinusitis> .
+<http://example/base/Disorder> <http://example/base/hasType> <http://example/base/SmellDisorder> .
+<http://example/base/SmellDisorder> <http://example/base/value> <anosmia> .
+<http://example/base/Disorder> <http://example/base/hasType> <http://example/base/TasteDisorder> .
+<http://example/base/TasteDisorder> <http://example/base/value> <Ageusia> .
+<http://example/base/118190> <http://example/base/hasHeightValue> <165> .
+<http://example/base/118190> <http://example/base/take> <http://example/base/Medication> .
+<http://example/base/Medication> <http://example/base/hasValue> <Antiallergica> .
+<http://example/base/Medication> <http://example/base/hasValue> <Antiarhytmica> .
+
+<http://example/base/101670> <http://example/base/hasDisorder> <http://example/base/Disorder> .
+<http://example/base/101670> <http://example/base/take> <http://example/base/Medication> .
+<http://example/base/101670> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://example/base/Patient> .
+<http://example/base/101670> <http://example/base/genderType> <Man> .
+<http://example/base/101670> <http://example/base/get> <http://example/base/Therapy> .
+<http://example/base/101670> <http://example/base/hasBMIValue> <25.15650942650346> .
+<http://example/base/101670> <http://example/base/hasDisorder> <http://example/base/Disorder> .
+<http://example/base/101670> <http://example/base/hasHeightValue> <186.5> .
+<http://example/base/101670> <http://example/base/take> <http://example/base/Medication> .
+<http://example/base/101670> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://example/base/Patient> .
+<http://example/base/101670> <http://example/base/hasDisorder> <http://example/base/Disorder> .
+<http://example/base/Disorder> <http://example/base/hasEtiology> <http://example/base/Etiology> .
+<http://example/base/Etiology> <http://example/base/hasValue> <Toxic/drugs> .
+<http://example/base/Disorder> <http://example/base/hasType> <http://example/base/SmellDisorder> .
+<http://example/base/SmellDisorder> <http://example/base/value> <anosmia> .
+<http://example/base/Disorder> <http://example/base/hasType> <http://example/base/TasteDisorder> .
+<http://example/base/TasteDisorder> <http://example/base/value> <Normogeusia> .
+<http://example/base/101670> <http://example/base/hasHeightValue> <165> .
+<http://example/base/101670> <http://example/base/take> <http://example/base/Medication> .
+<http://example/base/Medication> <http://example/base/hasValue> <Immunosuppressiva> .
+<http://example/base/Medication> <http://example/base/hasValue> <Neuro_medicatie> .

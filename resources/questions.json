@@ -1,0 +1,44 @@
+{
+  "questions": [
+    {
+      "id": 8,
+      "question": "What etiology type does People with a anosmia smell disorder type have?",
+      "file": "question_8.nxhd"
+    },
+    {
+      "id": 9,
+      "question": "What medication type are mostly used by patients with a smell disorder type?",
+      "file": "question_9.nxhd"
+    },
+    {
+      "id": 12,
+      "question": "What etiology type does someone with a Normogeusia taste disorder type have?",
+      "file": "question_12.nxhd"
+    },
+    {
+      "id": 13,
+      "question": "What medication type are mostly used by patients with a taste disorder type?",
+      "file": "question_13.nxhd"
+    },
+    {
+      "id": 14,
+      "question": "What are the most comorbidities for patients with a taste disorder type?",
+      "file": "question_14.nxhd"
+    },
+    {
+      "id": 15,
+      "question": "What are the most comorbidities for patients with a smell disorder type?",
+      "file": "question_15.nxhd"
+    },
+    {
+      "id": 16,
+      "question": "What is mostly the complaints duration for patients with smell disorder type?",
+      "file": "question_16.nxhd"
+    },
+    {
+      "id": 17,
+      "question": "What is mostly the complaints duration for patients with taste disorder type?",
+      "file": "question_17.nxhd"
+    }
+  ]
+}

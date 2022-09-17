@@ -1,0 +1,17 @@
+<http://en.wikipedia.org/wiki/Boston_Tea_Party>	<http://xmlns.com/foaf/0.1/primaryTopic>	<http://dbpedia.org/resource/Boston_Tea_Party>
+<http://dbpedia.org/resource/Boston_Tea_Party>	<http://www.w3.org/2004/02/skos/core#exactMatch>	<http://globalwordnet.org/ili/i41576>
+<http://dbpedia.org/resource/Boston_Tea_Party>	<http://dbpedia.org/property/align>	<right>
+<http://dbpedia.org/resource/Boston_Tea_Party>	<http://dbpedia.org/property/date>	<1773-12-16>
+<http://dbpedia.org/resource/Boston_Tea_Party>	<http://dbpedia.org/property/leadfigures>	<http://dbpedia.org/resource/William_Molineux>
+<http://dbpedia.org/resource/Boston_Tea_Party>	<http://dbpedia.org/property/leadfigures>	<http://dbpedia.org/resource/Samuel_Adams>
+<http://dbpedia.org/resource/Boston_Tea_Party>	<http://dbpedia.org/property/leadfigures>	<http://dbpedia.org/resource/Thomas_Hutchinson_(governor)>
+<http://dbpedia.org/resource/Boston_Tea_Party>	<http://dbpedia.org/property/leadfigures>	<http://dbpedia.org/resource/Paul_Revere>
+<http://dbpedia.org/resource/Boston_Tea_Party>	<http://dbpedia.org/property/leadfigures>	<( and other «Sons of Liberty»...)>
+<http://dbpedia.org/resource/Boston_Tea_Party>	<http://dbpedia.org/property/partof>	<the American Revolution>
+<http://dbpedia.org/resource/Boston_Tea_Party>	<http://dbpedia.org/property/place>	<http://dbpedia.org/resource/Boston>
+<http://dbpedia.org/resource/Boston_Tea_Party>	<http://dbpedia.org/property/place>	<http://dbpedia.org/resource/Province_of_Massachusetts_Bay>
+<http://dbpedia.org/resource/Boston_Tea_Party>	<http://dbpedia.org/property/title>	<Boston Tea Party>
+<http://dbpedia.org/resource/Boston_Tea_Party>	<http://dbpedia.org/property/causes>	<http://dbpedia.org/resource/Tea_Act>
+<http://dbpedia.org/resource/Boston_Tea_Party>	<http://purl.org/linguistics/gold/hypernym>	<http://dbpedia.org/resource/Protest>
+<http://dbpedia.org/resource/Boston_Tea_Party>	<http://dbpedia.org/property/place>	<http://dbpedia.org/resource/Boston>
+<http://dbpedia.org/resource/Boston_Tea_Party>	<http://dbpedia.org/property/place>	<http://dbpedia.org/resource/Province_of_Massachusetts_Bay>
