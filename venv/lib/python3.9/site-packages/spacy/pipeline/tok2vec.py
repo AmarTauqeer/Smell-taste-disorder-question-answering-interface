@@ -1,4 +1,4 @@
-from typing import Sequence, Iterable, Optional, Dict, Callable, List
+from typing import Sequence, Iterable, Optional, Dict, Callable, List, Any
 from thinc.api import Model, set_dropout_rate, Optimizer, Config
 from itertools import islice
 
@@ -60,8 +60,8 @@ class Tok2Vec(TrainablePipe):
         self.vocab = vocab
         self.model = model
         self.name = name
-        self.listener_map = {}
-        self.cfg = {}
+        self.listener_map: Dict[str, List["Tok2VecListener"]] = {}
+        self.cfg: Dict[str, Any] = {}
 
     @property
     def listeners(self) -> List["Tok2VecListener"]:
@@ -118,6 +118,10 @@ class Tok2Vec(TrainablePipe):
 
         DOCS: https://spacy.io/api/tok2vec#predict
         """
+        if not any(len(doc) for doc in docs):
+            # Handle cases where there are no tokens in any docs.
+            width = self.model.get_dim("nO")
+            return [self.model.ops.alloc((0, width)) for doc in docs]
         tokvecs = self.model.predict(docs)
         batch_id = Tok2VecListener.get_batch_id(docs)
         for listener in self.listeners:
@@ -245,12 +249,12 @@ class Tok2VecListener(Model):
         """
         Model.__init__(self, name=self.name, forward=forward, dims={"nO": width})
         self.upstream_name = upstream_name
-        self._batch_id = None
+        self._batch_id: Optional[int] = None
         self._outputs = None
         self._backprop = None
 
     @classmethod
-    def get_batch_id(cls, inputs: List[Doc]) -> int:
+    def get_batch_id(cls, inputs: Iterable[Doc]) -> int:
         """Calculate a content-sensitive hash of the batch of documents, to check
         whether the next batch of documents is unexpected.
         """

@@ -35,8 +35,8 @@ URL_PATTERN = (
     # host & domain names
     # mods: match is case-sensitive, so include [A-Z]
     r"(?:"  # noqa: E131
-      r"(?:"
-        r"[A-Za-z0-9\u00a1-\uffff]"
+      r"(?:"  # noqa: E131
+        r"[A-Za-z0-9\u00a1-\uffff]"  # noqa: E131
         r"[A-Za-z0-9\u00a1-\uffff_-]{0,62}"
       r")?"
       r"[A-Za-z0-9\u00a1-\uffff]\."
@@ -250,3 +250,9 @@ o.0
 
 for orth in emoticons:
     BASE_EXCEPTIONS[orth] = [{ORTH: orth}]
+
+
+# Moved from a suffix setting due to #9155 removing prefixes from consideration
+# for lookbehinds
+for u in "cfkCFK":
+    BASE_EXCEPTIONS[f"°{u}."] = [{ORTH: "°"}, {ORTH: f"{u}"}, {ORTH: "."}]
