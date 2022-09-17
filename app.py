@@ -4,6 +4,8 @@ import re
 import ssl
 import textwrap
 import time
+from flask_cors import CORS
+from flask import Flask
 
 import dash_bootstrap_components as dbc
 # import spacy
@@ -22,6 +24,9 @@ from SPARQLWrapper import SPARQLWrapper, JSON, BASIC
 from resources.data import graph_data
 
 ssl.SSLContext.verify_mode = ssl.VerifyMode.CERT_OPTIONAL
+
+app = Flask(__name__)
+cors = CORS(app)
 
 app = DashProxy(prevent_initial_callbacks=True, transforms=[MultiplexerTransform()],
                 external_stylesheets=[dbc.themes.BOOTSTRAP])
