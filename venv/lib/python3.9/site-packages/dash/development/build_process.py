@@ -29,7 +29,7 @@ class BuildProcess:
         self.asset_paths = (self.deps_folder, self.npm_modules)
 
     def _parse_package(self, path):
-        with open(path, "r") as fp:
+        with open(path, "r", encoding="utf-8") as fp:
             package = json.load(fp)
             self.version = package["version"]
             self.name = package["name"]
@@ -97,11 +97,9 @@ class BuildProcess:
             logger.info("bundles in %s %s", folder, copies)
 
             for copy in copies:
-                payload["MD5 ({})".format(copy)] = compute_md5(
-                    self._concat(folder, copy)
-                )
+                payload[f"MD5 ({copy})"] = compute_md5(self._concat(folder, copy))
 
-        with open(self._concat(self.main, "digest.json"), "w") as fp:
+        with open(self._concat(self.main, "digest.json"), "w", encoding="utf-8") as fp:
             json.dump(payload, fp, sort_keys=True, indent=4, separators=(",", ":"))
         logger.info(
             "bundle digest in digest.json:\n%s",
@@ -132,11 +130,7 @@ class BuildProcess:
 
             logger.info("copy npm dependency => %s", filename)
             ext = "min.js" if "min" in filename.split(".") else "js"
-            target = (
-                target.format(version)
-                if target
-                else "{}@{}.{}".format(name, version, ext)
-            )
+            target = target.format(version) if target else f"{name}@{version}.{ext}"
 
             shutil.copyfile(
                 self._concat(self.npm_modules, scope, name, subfolder, filename),
@@ -146,14 +140,16 @@ class BuildProcess:
         _script = "build:dev" if build == "local" else "build:js"
         logger.info("run `npm run %s`", _script)
         os.chdir(self.main)
-        run_command_with_process("npm run {}".format(_script))
+        run_command_with_process(f"npm run {_script}")
 
         logger.info("generate the `__init__.py` from template and versions")
-        with open(self._concat(self.main, "init.template")) as fp:
+        with open(self._concat(self.main, "init.template"), encoding="utf-8") as fp:
             t = string.Template(fp.read())
 
         with open(
-            self._concat(self.deps_folder, os.pardir, "_dash_renderer.py"), "w"
+            self._concat(self.deps_folder, os.pardir, "_dash_renderer.py"),
+            "w",
+            encoding="utf-8",
         ) as fp:
             fp.write(t.safe_substitute(versions))
 

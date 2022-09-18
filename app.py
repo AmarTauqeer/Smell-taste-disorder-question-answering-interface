@@ -835,4 +835,5 @@ def get_query_result(id, query):
 
 
 if __name__ == '__main__':
-    app.run_server(debug=True)
+    app.run(debug=True, host='0.0.0.0')
+    # app.run_server(debug=True)

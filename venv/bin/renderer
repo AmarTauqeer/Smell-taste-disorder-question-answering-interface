@@ -1,4 +1,4 @@
-#!/home/amar/D/Projects/semantic-technologies-project/venv/bin/python
+#!/home/amar/D/Projects/Smell-taste-disorder-question-answering-interface/venv/bin/python
 # -*- coding: utf-8 -*-
 import re
 import sys
