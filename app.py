@@ -242,9 +242,6 @@ def delete_nodes_edges(value, edges, nodes, elements):
     global data_table_arr
     global update_state_
     global node_or_edge_
-    global hostname
-    global username
-    global password
 
     if value is None:
         return elements
@@ -271,9 +268,10 @@ def delete_nodes_edges(value, edges, nodes, elements):
             # print("elements = {}".format(elements))
             source_node = elements[1]["data"]["label"]
             target_node = elements[2]["data"]["target"]
+
             data = get_query(graph_id_, source_node, target_node, edge)
             result = get_query_result(graph_id_, data, hostname, username, password)
-            print("change result= {}".format(result))
+            # print("change result= {}".format(result))
             if len(result) != 0:
 
                 for r in result:
@@ -438,7 +436,7 @@ def load_question_files(value):
 
         knowledge_graph = graph_utils.get_dash_graph(nodes_to_display)
         # knowledge_graph=graph_data.graph_1
-        print("knowledge graph= {}".format(knowledge_graph))
+        # print("knowledge graph= {}".format(knowledge_graph))
 
         return knowledge_graph, knowledge_graph, normal_style, fallback_style, graph_, \
                False, False, nodes_select_enabled, nodes_to_display, nodes_list
@@ -538,12 +536,12 @@ def open_qg(n_clicks):
 
 )
 def toggle_model(n_clicks):
-    print("graph_= {}".format(graph_))
+    # print("graph_= {}".format(graph_))
     source_node = graph_[2]["data"]["source"]
     target_node = graph_[2]["data"]["target"]
     edge = graph_[2]["data"]["label"]
-    # print("data table length= {}, update= {}".format(len(data_table_arr),update_state_))
-    if len(data_table_arr) == 0 and update_state_ == "false":
+    print("data table length= {}, update= {}".format(len(data_table_arr),update_state_))
+    if len(data_table_arr) == 0: #and update_state_ == "false":
         if node_or_edge_ == "node":
             edge = ""
         data = get_query(graph_id_, source_node, target_node, edge)
@@ -779,22 +777,17 @@ def get_query(id, source_node, target_node, edge):
 def get_query_result(id, query, hostname, username, password):
     # sparql setting
 
-    print("host_name= {}, username= {}, password= {}".format(hostname, username, password))
+    # print("host_name= {}, username= {}, password= {}".format(hostname, username, password))
     sparql = SPARQLWrapper(hostname)
     sparql.setCredentials(username, password)
     sparql.setReturnFormat(JSON)
-
     sparql.setQuery(query)
+    ret = sparql.queryAndConvert()
     data = []
+    print('id= {}'.format(id))
     try:
-        ret = sparql.queryAndConvert()
-        # header
-        # if id == '8':
-        #     data.append("Etiology Type")
-        # elif id == '9':
-        #     data.append("Medication")
-
         for r in ret["results"]["bindings"]:
+            new_data = {}
             # print("r= {}".format(ret["results"]["bindings"]))
             if id == '8':
                 new_data = {
