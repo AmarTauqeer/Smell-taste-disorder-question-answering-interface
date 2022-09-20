@@ -25,8 +25,8 @@ from resources.data import graph_data
 
 ssl.SSLContext.verify_mode = ssl.VerifyMode.CERT_OPTIONAL
 
-app = Flask(__name__)
-cors = CORS(app)
+# app = Flask(__name__)
+# cors = CORS(app)
 
 app = DashProxy(prevent_initial_callbacks=True, transforms=[MultiplexerTransform()],
                 external_stylesheets=[dbc.themes.BOOTSTRAP])
@@ -273,7 +273,7 @@ def delete_nodes_edges(value, edges, nodes, elements):
             target_node = elements[2]["data"]["target"]
             data = get_query(graph_id_, source_node, target_node, edge)
             result = get_query_result(graph_id_, data)
-            # print("change result= {}".format(result))
+            print("change result= {}".format(result))
             if len(result) != 0:
 
                 for r in result:
@@ -772,7 +772,7 @@ def get_query(id, source_node, target_node, edge):
 
 def get_query_result(id, query):
     print('hostname= {}, userid = {} and password= {}'.format(hostname, userid, password))
-    # print("query={}".format(query))
+    print("query={}".format(query))
     sparql.setQuery(query)
     data = []
     try:
