@@ -39,13 +39,12 @@ update_state_ = "false"
 node_or_edge_ = "node"
 
 # sparql setting
-host_url = os.getenv("HOST_URI_GET")
-hostname = host_url
-userid = os.getenv("user_name")
+host_name = os.getenv("HOST_URI_GET")
+username = os.getenv("user_name")
 password = os.getenv("password")
-sparql = SPARQLWrapper(host_url)
-sparql.setCredentials(userid, password)
-sparql.setHTTPAuth(BASIC)
+sparql = SPARQLWrapper(host_name)
+sparql.setCredentials(username, password)
+# sparql.setHTTPAuth(BASIC)
 sparql.setReturnFormat(JSON)
 
 
@@ -596,7 +595,6 @@ def get_list_of_disorder():
     }}
 
                     """)
-    print('hostname= {}, userid = {} and password= {}'.format(hostname, userid, password))
 
     sparql.setQuery(query)
     data = []
@@ -771,8 +769,9 @@ def get_query(id, source_node, target_node, edge):
 
 
 def get_query_result(id, query):
-    print('hostname= {}, userid = {} and password= {}'.format(hostname, userid, password))
     print("query={}".format(query))
+    print('hostname= {}, userid = {} and password= {}'.format(host_name, username, password))
+
     sparql.setQuery(query)
     data = []
     try:
