@@ -6,4 +6,4 @@ services:
     restart: always
     build: ./
     ports:
-      - 8050:5000
+      - 8050:8050

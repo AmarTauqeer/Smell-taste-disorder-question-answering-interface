@@ -44,8 +44,10 @@ hostname = host_url
 userid = os.getenv("user_name")
 password = os.getenv("password")
 sparql = SPARQLWrapper(host_url)
+sparql.setCredentials(userid, password)
 sparql.setHTTPAuth(BASIC)
 sparql.setReturnFormat(JSON)
+
 
 # nlp = spacy.load("en_core_web_sm")
 graph_utils = GraphUtils()
@@ -594,6 +596,7 @@ def get_list_of_disorder():
     }}
 
                     """)
+    print('hostname= {}, userid = {} and password= {}'.format(hostname, userid, password))
 
     sparql.setQuery(query)
     data = []
@@ -768,6 +771,7 @@ def get_query(id, source_node, target_node, edge):
 
 
 def get_query_result(id, query):
+    print('hostname= {}, userid = {} and password= {}'.format(hostname, userid, password))
     # print("query={}".format(query))
     sparql.setQuery(query)
     data = []
@@ -835,5 +839,5 @@ def get_query_result(id, query):
 
 
 if __name__ == '__main__':
-    app.run(debug=True, host='0.0.0.0')
-    # app.run_server(debug=True)
+    # app.run(debug=True, host='0.0.0.0')
+    app.run_server(debug=True)
