@@ -22,6 +22,7 @@ from layout.view_export_layout import view_export_layout
 from SPARQLWrapper import SPARQLWrapper, JSON, BASIC
 
 from resources.data import graph_data
+from dotenv import load_dotenv
 
 ssl.SSLContext.verify_mode = ssl.VerifyMode.CERT_OPTIONAL
 
@@ -37,6 +38,12 @@ graph_ = None
 data_table_arr = []
 update_state_ = "false"
 node_or_edge_ = "node"
+
+load_dotenv('.env')
+hostname=os.getenv("HOST_URI_GET")
+username=os.getenv("user_name")
+password=os.getenv("password")
+
 
 
 # nlp = spacy.load("en_core_web_sm")
@@ -144,7 +151,7 @@ def get_ranked_labels(question_id, data, node):
         return [], ''
     label = data[0]['label']
     # labels = graph_utils.get_ranked_rdfs_labels(question_id, data[0]['label'], node)
-    labels = get_list_of_disorder()
+    labels = get_list_of_disorder(hostname,username,password)
     if label not in labels:
         labels.insert(0, {'label': label, 'value': label})
     return labels, label
@@ -235,6 +242,9 @@ def delete_nodes_edges(value, edges, nodes, elements):
     global data_table_arr
     global update_state_
     global node_or_edge_
+    global hostname
+    global username
+    global password
 
     if value is None:
         return elements
@@ -262,7 +272,7 @@ def delete_nodes_edges(value, edges, nodes, elements):
             source_node = elements[1]["data"]["label"]
             target_node = elements[2]["data"]["target"]
             data = get_query(graph_id_, source_node, target_node, edge)
-            result = get_query_result(graph_id_, data)
+            result = get_query_result(graph_id_, data, hostname, username, password)
             print("change result= {}".format(result))
             if len(result) != 0:
 
@@ -537,7 +547,8 @@ def toggle_model(n_clicks):
         if node_or_edge_ == "node":
             edge = ""
         data = get_query(graph_id_, source_node, target_node, edge)
-        result = get_query_result(graph_id_, data)
+
+        result = get_query_result(graph_id_, data, hostname, username, password)
         print("result= {}".format(result))
         arr = []
         for r in result:
@@ -560,14 +571,9 @@ def toggle_model(n_clicks):
     return n_clicks > 0, data_table_arr
 
 
-def get_list_of_disorder():
-    # sparql setting
-    host_name = os.getenv("HOST_URI_GET")
-    username = os.getenv("user_name")
-    password = os.getenv("password")
-
-    print("host_name= {}, username= {}, password= {}".format(host_name, username, password))
-    sparql = SPARQLWrapper(host_name)
+def get_list_of_disorder(hostname, username, password):
+    print("host_name= {}, username= {}, password= {}".format(hostname, username, password))
+    sparql = SPARQLWrapper(hostname)
     sparql.setCredentials(username, password)
     # sparql.setHTTPAuth(BASIC)
     sparql.setReturnFormat(JSON)
@@ -768,21 +774,13 @@ def get_query(id, source_node, target_node, edge):
                 order by desc(?total)
                """.format(source_node))
         return query
+# sparql setting
 
-
-def get_query_result(id, query):
+def get_query_result(id, query, hostname, username, password):
     # sparql setting
 
-    # host_name = os.getenv("HOST_URI_GET")
-    # username = os.getenv("user_name")
-    # password = os.getenv("password")
-
-    host_name = "http://95.217.61.124:7200/repositories/question_answers"
-    username = "admin"
-    password = "Sm@shHitA_CT00L"
-
-    print("host_name= {}, username= {}, password= {}".format(host_name, username, password))
-    sparql = SPARQLWrapper(host_name)
+    print("host_name= {}, username= {}, password= {}".format(hostname, username, password))
+    sparql = SPARQLWrapper(hostname)
     sparql.setCredentials(username, password)
     sparql.setReturnFormat(JSON)
 
