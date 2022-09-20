@@ -772,9 +772,14 @@ def get_query(id, source_node, target_node, edge):
 
 def get_query_result(id, query):
     # sparql setting
-    host_name = os.getenv("HOST_URI_GET")
-    username = os.getenv("user_name")
-    password = os.getenv("password")
+
+    # host_name = os.getenv("HOST_URI_GET")
+    # username = os.getenv("user_name")
+    # password = os.getenv("password")
+
+    host_name = "http://95.217.61.124:7200/repositories/question_answers"
+    username = "admin"
+    password = "Sm@shHitA_CT00L"
 
     print("host_name= {}, username= {}, password= {}".format(host_name, username, password))
     sparql = SPARQLWrapper(host_name)
