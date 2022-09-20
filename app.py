@@ -38,15 +38,6 @@ data_table_arr = []
 update_state_ = "false"
 node_or_edge_ = "node"
 
-# sparql setting
-host_name = os.getenv("HOST_URI_GET")
-username = os.getenv("user_name")
-password = os.getenv("password")
-sparql = SPARQLWrapper(host_name)
-sparql.setCredentials(username, password)
-# sparql.setHTTPAuth(BASIC)
-sparql.setReturnFormat(JSON)
-
 
 # nlp = spacy.load("en_core_web_sm")
 graph_utils = GraphUtils()
@@ -570,6 +561,17 @@ def toggle_model(n_clicks):
 
 
 def get_list_of_disorder():
+    # sparql setting
+    host_name = os.getenv("HOST_URI_GET")
+    username = os.getenv("user_name")
+    password = os.getenv("password")
+
+    print("host_name= {}, username= {}, password= {}".format(host_name, username, password))
+    sparql = SPARQLWrapper(host_name)
+    sparql.setCredentials(username, password)
+    # sparql.setHTTPAuth(BASIC)
+    sparql.setReturnFormat(JSON)
+
     query = textwrap.dedent("""
     PREFIX :  <http://example.com/base/>  
     select * 
@@ -769,8 +771,15 @@ def get_query(id, source_node, target_node, edge):
 
 
 def get_query_result(id, query):
-    print("query={}".format(query))
-    print('hostname= {}, userid = {} and password= {}'.format(host_name, username, password))
+    # sparql setting
+    host_name = os.getenv("HOST_URI_GET")
+    username = os.getenv("user_name")
+    password = os.getenv("password")
+
+    print("host_name= {}, username= {}, password= {}".format(host_name, username, password))
+    sparql = SPARQLWrapper(host_name)
+    sparql.setCredentials(username, password)
+    sparql.setReturnFormat(JSON)
 
     sparql.setQuery(query)
     data = []
