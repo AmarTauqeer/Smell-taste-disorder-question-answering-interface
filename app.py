@@ -82,10 +82,10 @@ app.layout = html.Div([
             dbc.Button("Question graph", id="open-qg", n_clicks=0, disabled=True, color="success",
                        style={'width': '110px', 'height': '80px', 'textAlign': 'center'})
             , width=1),
-        # dbc.Col(
-        #     dbc.Button("View export", id="open-view-export", n_clicks=0, color="success",
-        #                style={'width': '110px', 'height': '80px', 'textAlign': 'center'})
-        #     , width=1),
+        dbc.Col(
+            dbc.Button("Question insight", id="open-view-export", n_clicks=0, color="success",
+                       style={'width': '110px', 'height': '80px', 'textAlign': 'center'})
+            , width=1),
         dbc.Col(dbc.Button("? Help", id="open-help", n_clicks=0, color="info",
                            style={'width': '110px', 'height': '80px', 'textAlign': 'center'}), width=1)
     ], justify="center", align="center", style={'textAlign': 'center'}),
@@ -112,7 +112,7 @@ app.layout = html.Div([
     ),
     dbc.Modal(
         [
-            dbc.ModalHeader(dbc.ModalTitle("View Export")),
+            dbc.ModalHeader(dbc.ModalTitle("Question Insight View")),
             dbc.ModalBody(view_export_layout),
             dbc.ModalFooter(
                 "Select an export with the select item above")
@@ -129,8 +129,8 @@ app.layout = html.Div([
                     html.Li("Visualizing a subset of a knowledge graph, corresponding to the question"),
                     html.Li("Generating a question graph for this question"),
                     html.Li("Editing the generated question graph"),
-                    html.Li("Export the question graph to the local filesystem"),
-                    html.Li("The exported question graph can be displayed using the view export button"),
+                    # html.Li("Export the question graph to the local filesystem"),
+                    html.Li("The question insight view can be displayed using the Question insight button"),
                 ]
 
             ),
@@ -463,12 +463,12 @@ def open_kg(n_clicks):
     return n_clicks > 0
 
 
-# @app.callback(
-#     Output("modal-export", "is_open"),
-#     Input("open-view-export", "n_clicks")
-# )
-# def open_export(n_clicks):
-#     return n_clicks > 0
+@app.callback(
+    Output("modal-export", "is_open"),
+    Input("open-view-export", "n_clicks")
+)
+def open_export(n_clicks):
+    return n_clicks > 0
 
 
 @app.callback(
@@ -505,14 +505,14 @@ def open_qg(n_clicks):
     return n_clicks > 0
 
 
-# @app.callback(
-#     Output("view-export-graph", "elements"),
-#     Input("select-export", "value")
-# )
-# def generate_export_graph(export_file):
-#     edges, _ = graph_utils_export.load_file(export_file)
-#
-#     return graph_utils_export.get_dash_graph(edges)
+@app.callback(
+    Output("view-export-graph", "elements"),
+    Input("select-export", "value")
+)
+def generate_export_graph(export_file):
+    edges, _ = graph_utils_export.load_file(export_file)
+
+    return graph_utils_export.get_dash_graph(edges)
 
 # @app.callback(
 #     Input('export-button', 'n_clicks'),
