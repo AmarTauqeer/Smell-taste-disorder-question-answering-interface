@@ -8,19 +8,15 @@ cyto.load_extra_layouts()
 
 
 def get_export_files():
-    print("hi export file")
     file_dir = os.path.dirname(os.path.realpath('__file__'))
     file_path = os.path.join(file_dir, 'output/*')
     print(file_path)
     export_files = []
     glob_array= glob.glob(file_path)
-    print(glob_array)
-    # print(glob.glob('/home/amar/D/Projects/Smell-taste-disorder-question-answering-interface/output/*'))
 
     for file in glob_array:
         file_name = os.path.basename(file)
         export_files.append({'label': file_name, 'value': file})
-        # print(export_files)
     return export_files
 
 

@@ -271,7 +271,7 @@ def delete_nodes_edges(value, edges, nodes, elements):
 
             data = get_query(graph_id_, source_node, target_node, edge)
             result = get_query_result(graph_id_, data, hostname, username, password)
-            # print("change result= {}".format(result))
+            print("change result= {}".format(result))
             if len(result) != 0:
 
                 for r in result:
@@ -615,7 +615,7 @@ def get_list_of_disorder(hostname, username, password):
 
 
 def get_query(id, source_node, target_node, edge):
-    print("source_node = {}, target node= {}, edge= {}".format(source_node, target_node, edge))
+    # print("source_node = {}, target node= {}, edge= {}".format(source_node, target_node, edge))
     if id == '8':
         query = ""
         query = textwrap.dedent("""
@@ -843,5 +843,5 @@ def get_query_result(id, query, hostname, username, password):
 
 
 if __name__ == '__main__':
-    app.run(debug=True, host='0.0.0.0')
-    # app.run_server(debug=True)
+    # app.run(debug=True, host='0.0.0.0')
+    app.run_server(debug=True)
