@@ -82,10 +82,10 @@ app.layout = html.Div([
             dbc.Button("Question graph", id="open-qg", n_clicks=0, disabled=True, color="success",
                        style={'width': '110px', 'height': '80px', 'textAlign': 'center'})
             , width=1),
-        dbc.Col(
-            dbc.Button("Question insight", id="open-view-export", n_clicks=0, color="success",
-                       style={'width': '110px', 'height': '80px', 'textAlign': 'center'})
-            , width=1),
+        # dbc.Col(
+        #     dbc.Button("Question insight", id="open-view-export", n_clicks=0, color="success",
+        #                style={'width': '110px', 'height': '80px', 'textAlign': 'center'})
+        #     , width=1),
         dbc.Col(dbc.Button("? Help", id="open-help", n_clicks=0, color="info",
                            style={'width': '110px', 'height': '80px', 'textAlign': 'center'}), width=1)
     ], justify="center", align="center", style={'textAlign': 'center'}),
@@ -463,12 +463,12 @@ def open_kg(n_clicks):
     return n_clicks > 0
 
 
-@app.callback(
-    Output("modal-export", "is_open"),
-    Input("open-view-export", "n_clicks")
-)
-def open_export(n_clicks):
-    return n_clicks > 0
+# @app.callback(
+#     Output("modal-export", "is_open"),
+#     Input("open-view-export", "n_clicks")
+# )
+# def open_export(n_clicks):
+#     return n_clicks > 0
 
 
 @app.callback(
@@ -739,7 +739,7 @@ def get_query(id, source_node, target_node, edge):
         query = textwrap.dedent("""
                 PREFIX :  <http://example.com/base/> 
                 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-                select  ?complaint_duration (count(?complaint_duration) as ?total) 
+                select  ?complaint_duration (count(?complaint_duration) as ?total)
                 where{{
                         select *
                         where {{ 
@@ -750,7 +750,7 @@ def get_query(id, source_node, target_node, edge):
                             }}
                     }}
                 group by ?complaint_duration
-                order by desc(?total)
+                order by ?total
                """.format(source_node))
         return query
     elif id == '17':

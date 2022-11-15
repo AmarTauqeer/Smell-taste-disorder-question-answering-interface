@@ -1,4 +1,4 @@
-FROM python:3.9.5
+FROM python:3.10.6
 WORKDIR /Smell-taste-disorder-question-answering-interface
 
 COPY . /Smell-taste-disorder-question-answering-interface
