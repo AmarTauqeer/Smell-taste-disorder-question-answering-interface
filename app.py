@@ -40,11 +40,9 @@ update_state_ = "false"
 node_or_edge_ = "node"
 
 load_dotenv('.env')
-hostname=os.getenv("HOST_URI_GET")
-username=os.getenv("user_name")
-password=os.getenv("password")
-
-
+hostname = os.getenv("HOST_URI_GET")
+username = os.getenv("user_name")
+password = os.getenv("password")
 
 # nlp = spacy.load("en_core_web_sm")
 graph_utils = GraphUtils()
@@ -69,25 +67,29 @@ app.layout = html.Div([
 
         ), width=4), justify="center", align="center", style={"marginTop": "10%"}),
     dbc.Row([
-        dbc.Col(question_select, width=5),
+        dbc.Col(question_select, width=6),
     ],
         justify="center",
         align="center", style={"margin": "8px"}),
     dbc.Row([
         dbc.Col(
-            dbc.Button("Knowledge graph", id="open-kg", n_clicks=0, disabled=True, color="secondary",
-                       style={'width': '110px', 'height': '80px', 'textAlign': 'center'}),
-            width=1),
+            dbc.Button("Knowledge graph visualization", id="open-kg", n_clicks=0, disabled=True, color="primary",
+                       style={'width': '160px', 'height': '70px', 'textAlign': 'center',
+                              'borderRadius': '15px', 'fontWeight': 'bold'}),
+            width=2),
         dbc.Col(
             dbc.Button("Question graph", id="open-qg", n_clicks=0, disabled=True, color="success",
-                       style={'width': '110px', 'height': '80px', 'textAlign': 'center'})
-            , width=1),
+                       style={'width': '150px', 'height': '70px', 'textAlign': 'center', 'borderRadius': '15px',
+                              'fontWeight': 'bold'})
+            , width=2),
         # dbc.Col(
         #     dbc.Button("Question insight", id="open-view-export", n_clicks=0, color="success",
         #                style={'width': '110px', 'height': '80px', 'textAlign': 'center'})
         #     , width=1),
         dbc.Col(dbc.Button("? Help", id="open-help", n_clicks=0, color="info",
-                           style={'width': '110px', 'height': '80px', 'textAlign': 'center'}), width=1)
+                           style={'width': '150px', 'height': '70px', 'textAlign': 'center', 'borderRadius': '15px',
+                                  'fontWeight': 'bold','color':'#fff'}),
+                width=2)
     ], justify="center", align="center", style={'textAlign': 'center'}),
     dbc.Modal(
         [
@@ -108,7 +110,8 @@ app.layout = html.Div([
             dbc.ModalFooter(id="question-graph-footer")
         ],
         id="modal-qg",
-        fullscreen=True,
+        size='lg',
+        # fullscreen=True,
     ),
     dbc.Modal(
         [
@@ -151,7 +154,7 @@ def get_ranked_labels(question_id, data, node):
         return [], ''
     label = data[0]['label']
     # labels = graph_utils.get_ranked_rdfs_labels(question_id, data[0]['label'], node)
-    labels = get_list_of_disorder(hostname,username,password)
+    labels = get_list_of_disorder(hostname, username, password)
     if label not in labels:
         labels.insert(0, {'label': label, 'value': label})
     return labels, label
@@ -196,16 +199,16 @@ def display_selected_edge_data(data, value):
 @app.callback(Output('selected-node-id', 'children'),
               Input('knowledge-graph', 'selectedEdgeData'))
 def show_edge_id(selected_edge):
-    if selected_edge is not None and len(selected_edge) == 1:
-        return selected_edge[0]["uri"]
+    # if selected_edge is not None and len(selected_edge) == 1:
+    #     return selected_edge[0]["uri"]
     return ""
 
 
 @app.callback(Output('selected-node-id', 'children'),
               Input('knowledge-graph', 'selectedNodeData'))
 def show_node_id(selected_node):
-    if selected_node is not None and len(selected_node) == 1:
-        return selected_node[0]["id"]
+    # if selected_node is not None and len(selected_node) == 1:
+    #     return selected_node[0]["id"]
     return ""
 
 
@@ -276,8 +279,8 @@ def delete_nodes_edges(value, edges, nodes, elements):
 
                 for r in result:
                     types = ""
-                    if "etiology" in r:
-                        types = r['etiology']
+                    if "hasEtiology" in r:
+                        types = r['hasEtiology']
                     elif 'medication' in r:
                         types = r['medication']
                     elif 'complaint_duration' in r:
@@ -439,7 +442,7 @@ def load_question_files(value):
         # print("knowledge graph= {}".format(knowledge_graph))
 
         return knowledge_graph, knowledge_graph, normal_style, fallback_style, graph_, \
-               False, False, nodes_select_enabled, nodes_to_display, nodes_list
+            False, False, nodes_select_enabled, nodes_to_display, nodes_list
 
 
 @app.callback(
@@ -514,6 +517,7 @@ def generate_export_graph(export_file):
 
     return graph_utils_export.get_dash_graph(edges)
 
+
 # @app.callback(
 #     Input('export-button', 'n_clicks'),
 #     Output('question-graph-footer', 'children'),
@@ -536,23 +540,24 @@ def generate_export_graph(export_file):
 
 )
 def toggle_model(n_clicks):
-    # print("graph_= {}".format(graph_))
+    print("graph_= {}".format(graph_))
     source_node = graph_[2]["data"]["source"]
     target_node = graph_[2]["data"]["target"]
     edge = graph_[2]["data"]["label"]
-    print("data table length= {}, update= {}".format(len(data_table_arr),update_state_))
-    if len(data_table_arr) == 0: #and update_state_ == "false":
+    print("data table length= {}, update= {}".format(len(data_table_arr), update_state_))
+    if len(data_table_arr) == 0:  # and update_state_ == "false":
         if node_or_edge_ == "node":
             edge = ""
         data = get_query(graph_id_, source_node, target_node, edge)
+        print("data= {}".format(data))
 
         result = get_query_result(graph_id_, data, hostname, username, password)
         print("result= {}".format(result))
         arr = []
         for r in result:
             types = ""
-            if "etiology" in r:
-                types = r['etiology']
+            if "hasEtiology" in r:
+                types = r['hasEtiology']
             elif 'medication' in r:
                 types = r['medication']
             elif 'complaint_duration' in r:
@@ -621,17 +626,17 @@ def get_query(id, source_node, target_node, edge):
         query = textwrap.dedent("""
             PREFIX :  <http://example.com/base/> 
             PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-            select  ?etiology (count(?etiology) as ?total) 
+            select  ?hasEtiology (count(?hasEtiology) as ?total) 
             where{{
             select *
             where {{ 
                 ?patient a :Patient;
                       :hasSmellDisorder ?smell;
-                      :hasEtiology ?etiology .
+                      :hasEtiologyType ?hasEtiology .
                  filter(?smell="{0}")   
             }}
             }}
-            group by ?etiology
+            group by ?hasEtiology
             order by desc(?total) 
                 """.format(source_node))
         # print(query)
@@ -641,17 +646,195 @@ def get_query(id, source_node, target_node, edge):
         query = textwrap.dedent("""
         PREFIX :  <http://example.com/base/> 
         PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-        select  ?medication (count(?medication) as ?total) 
+        select (?title as ?medication) ?total
         where{{
-        select *
+        {{
+        select ?title (count(?title) as ?total)
         where {{ 
-            ?patient a :Patient;
-                  :hasSmellDisorder ?smell;
-                  :takeMedication ?medication .
-             filter(?smell="{0}")   
+                ?patient a :Patient;
+                         :hasSmellDisorder ?smell;
+                         :hasAntiArrhythmic ?title .
+                filter(?smell="{0}")   
+                }}
+            group by ?title        
+            }}
+        union
+            {{
+                select ?title (count(?title) as ?total)
+                where {{ 
+                    ?patient a :Patient;
+                             :hasSmellDisorder ?smell;
+                             :hasAntiAllergic ?title .
+                    filter(?smell="{0}")   
+                }}
+                group by ?title    
+            }}
+            union
+            {{
+                select ?title (count(?title) as ?total)
+                where {{ 
+                    ?patient a :Patient;
+                             :hasSmellDisorder ?smell;
+                             :hasImmunosuppressant ?title .
+                    filter(?smell="{0}")   
+                }}
+                group by ?title    
+            }}
+            union
+            {{
+                select ?title (count(?title) as ?total)
+                where {{ 
+                    ?patient a :Patient;
+                             :hasSmellDisorder ?smell;
+                             :hasNeuroMedication ?title .
+                    filter(?smell="{0}")   
+                }}
+                group by ?title    
+            }}
+             union
+            {{
+                select ?title (count(?title) as ?total)
+                where {{ 
+                    ?patient a :Patient;
+                             :hasSmellDisorder ?smell;
+                             :hasStomachMedication ?title .
+                    filter(?smell="{0}")   
+                }}
+                group by ?title    
+            }}
+            union
+            {{
+                select ?title (count(?title) as ?total)
+                where {{ 
+                    ?patient a :Patient;
+                             :hasSmellDisorder ?smell;
+                             :hasStatin ?title .
+                    filter(?smell="{0}")   
+                }}
+                group by ?title    
+            }}
+            union
+            {{
+                select ?title (count(?title) as ?total)
+                where {{ 
+                    ?patient a :Patient;
+                             :hasSmellDisorder ?smell;
+                             :hasUrological ?title .
+                    filter(?smell="{0}")   
+                }}
+                group by ?title    
+            }}
+            union
+            {{
+                select ?title (count(?title) as ?total)
+                where {{ 
+                    ?patient a :Patient;
+                             :hasSmellDisorder ?smell;
+                             :hasPainMedication ?title .
+                    filter(?smell="{0}")   
+                }}
+                group by ?title    
+            }}
+            union
+            {{
+                select ?title (count(?title) as ?total)
+                where {{ 
+                    ?patient a :Patient;
+                             :hasSmellDisorder ?smell;
+                             :hasOsteoporosis ?title .
+                    filter(?smell="{0}")   
+                }}
+                group by ?title    
+            }}
+            union
+            {{
+                select ?title (count(?title) as ?total)
+                where {{ 
+                    ?patient a :Patient;
+                             :hasSmellDisorder ?smell;
+                             :hasAntiDiabetic ?title .
+                    filter(?smell="{0}")   
+                }}
+                group by ?title    
+            }}
+            union
+            {{
+                select ?title (count(?title) as ?total)
+                where {{ 
+                    ?patient a :Patient;
+                             :hasSmellDisorder ?smell;
+                             :hasAntiHypertensive ?title .
+                    filter(?smell="{0}")   
+                }}
+                group by ?title    
+            }}
+            union
+            {{
+                select ?title (count(?title) as ?total)
+                where {{ 
+                    ?patient a :Patient;
+                             :hasSmellDisorder ?smell;
+                             :hasAntiBiotic ?title .
+                    filter(?smell="{0}")   
+                }}
+                group by ?title    
+            }}
+             union
+            {{
+                select ?title (count(?title) as ?total)
+                where {{ 
+                    ?patient a :Patient;
+                             :hasSmellDisorder ?smell;
+                             :hasCytostatic ?title .
+                    filter(?smell="{0}")   
+                }}
+                group by ?title    
+            }}
+            union
+            {{
+                select ?title (count(?title) as ?total)
+                where {{ 
+                    ?patient a :Patient;
+                             :hasSmellDisorder ?smell;
+                             :hasThyroidTestosteroneGH ?title .
+                    filter(?smell="{0}")   
+                }}
+                group by ?title    
+            }}
+            union
+            {{
+                select ?title (count(?title) as ?total)
+                where {{ 
+                    ?patient a :Patient;
+                             :hasSmellDisorder ?smell;
+                             :hasAntiPsychotic ?title .
+                    filter(?smell="{0}")   
+                }}
+                group by ?title    
+            }}
+            union
+            {{
+                select ?title (count(?title) as ?total)
+                where {{ 
+                    ?patient a :Patient;
+                             :hasSmellDisorder ?smell;
+                             :hasAnxiolytic ?title .
+                    filter(?smell="{0}")   
+                }}
+                group by ?title    
+            }}
+            union
+            {{
+                select ?title (count(?title) as ?total)
+                where {{ 
+                    ?patient a :Patient;
+                             :hasSmellDisorder ?smell;
+                             :hasAntiDepressant ?title .
+                    filter(?smell="{0}")   
+                }}
+                group by ?title    
+            }}
         }}
-        }}
-        group by ?medication
         order by desc(?total)
         """.format(source_node))
         # print(query)
@@ -661,17 +844,17 @@ def get_query(id, source_node, target_node, edge):
         query = textwrap.dedent("""
             PREFIX :  <http://example.com/base/> 
             PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-            select  ?etiology (count(?etiology) as ?total) 
+            select  ?hasEtiology (count(?hasEtiology) as ?total) 
             where{{
             select *
             where {{ 
                 ?patient a :Patient;
                       :hasTasteDisorder ?taste;
-                      :hasEtiology ?etiology .
+                      :hasEtiologyType ?hasEtiology .
                  filter(?taste="{0}")   
             }}
             }}
-            group by ?etiology
+            group by ?hasEtiology
             order by desc(?total)
                """.format(source_node))
         # print(query)
@@ -679,20 +862,198 @@ def get_query(id, source_node, target_node, edge):
     elif id == '13':
         query = ""
         query = textwrap.dedent("""
-                PREFIX :  <http://example.com/base/> 
-                PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-                select  ?medication (count(?medication) as ?total) 
-                where{{
-                select *
+        PREFIX :  <http://example.com/base/> 
+        PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+        select (?title as ?medication) ?total
+        where{{
+        {{
+        select ?title (count(?title) as ?total)
+        where {{ 
+                ?patient a :Patient;
+                         :hasTasteDisorder ?smell;
+                         :hasAntiArrhythmic ?title .
+                filter(?smell="{0}")   
+                }}
+            group by ?title        
+            }}
+        union
+            {{
+                select ?title (count(?title) as ?total)
                 where {{ 
                     ?patient a :Patient;
-                          :hasTasteDisorder ?taste;
-                          :takeMedication ?medication .
-                     filter(?taste="{0}")   
+                             :hasTasteDisorder ?smell;
+                             :hasAntiAllergic ?title .
+                    filter(?smell="{0}")   
                 }}
+                group by ?title    
+            }}
+            union
+            {{
+                select ?title (count(?title) as ?total)
+                where {{ 
+                    ?patient a :Patient;
+                             :hasTasteDisorder ?smell;
+                             :hasImmunosuppressant ?title .
+                    filter(?smell="{0}")   
                 }}
-                group by ?medication
-                order by desc(?total)
+                group by ?title    
+            }}
+            union
+            {{
+                select ?title (count(?title) as ?total)
+                where {{ 
+                    ?patient a :Patient;
+                             :hasTasteDisorder ?smell;
+                             :hasNeuroMedication ?title .
+                    filter(?smell="{0}")   
+                }}
+                group by ?title    
+            }}
+             union
+            {{
+                select ?title (count(?title) as ?total)
+                where {{ 
+                    ?patient a :Patient;
+                             :hasTasteDisorder ?smell;
+                             :hasStomachMedication ?title .
+                    filter(?smell="{0}")   
+                }}
+                group by ?title    
+            }}
+            union
+            {{
+                select ?title (count(?title) as ?total)
+                where {{ 
+                    ?patient a :Patient;
+                             :hasTasteDisorder ?smell;
+                             :hasStatin ?title .
+                    filter(?smell="{0}")   
+                }}
+                group by ?title    
+            }}
+            union
+            {{
+                select ?title (count(?title) as ?total)
+                where {{ 
+                    ?patient a :Patient;
+                             :hasTasteDisorder ?smell;
+                             :hasUrological ?title .
+                    filter(?smell="{0}")   
+                }}
+                group by ?title    
+            }}
+            union
+            {{
+                select ?title (count(?title) as ?total)
+                where {{ 
+                    ?patient a :Patient;
+                             :hasTasteDisorder ?smell;
+                             :hasPainMedication ?title .
+                    filter(?smell="{0}")   
+                }}
+                group by ?title    
+            }}
+            union
+            {{
+                select ?title (count(?title) as ?total)
+                where {{ 
+                    ?patient a :Patient;
+                             :hasTasteDisorder ?smell;
+                             :hasOsteoporosis ?title .
+                    filter(?smell="{0}")   
+                }}
+                group by ?title    
+            }}
+            union
+            {{
+                select ?title (count(?title) as ?total)
+                where {{ 
+                    ?patient a :Patient;
+                             :hasTasteDisorder ?smell;
+                             :hasAntiDiabetic ?title .
+                    filter(?smell="{0}")   
+                }}
+                group by ?title    
+            }}
+            union
+            {{
+                select ?title (count(?title) as ?total)
+                where {{ 
+                    ?patient a :Patient;
+                             :hasTasteDisorder ?smell;
+                             :hasAntiHypertensive ?title .
+                    filter(?smell="{0}")   
+                }}
+                group by ?title    
+            }}
+            union
+            {{
+                select ?title (count(?title) as ?total)
+                where {{ 
+                    ?patient a :Patient;
+                             :hasTasteDisorder ?smell;
+                             :hasAntiBiotic ?title .
+                    filter(?smell="{0}")   
+                }}
+                group by ?title    
+            }}
+             union
+            {{
+                select ?title (count(?title) as ?total)
+                where {{ 
+                    ?patient a :Patient;
+                             :hasTasteDisorder ?smell;
+                             :hasCytostatic ?title .
+                    filter(?smell="{0}")   
+                }}
+                group by ?title    
+            }}
+            union
+            {{
+                select ?title (count(?title) as ?total)
+                where {{ 
+                    ?patient a :Patient;
+                             :hasTasteDisorder ?smell;
+                             :hasThyroidTestosteroneGH ?title .
+                    filter(?smell="{0}")   
+                }}
+                group by ?title    
+            }}
+            union
+            {{
+                select ?title (count(?title) as ?total)
+                where {{ 
+                    ?patient a :Patient;
+                             :hasTasteDisorder ?smell;
+                             :hasAntiPsychotic ?title .
+                    filter(?smell="{0}")   
+                }}
+                group by ?title    
+            }}
+            union
+            {{
+                select ?title (count(?title) as ?total)
+                where {{ 
+                    ?patient a :Patient;
+                             :hasTasteDisorder ?smell;
+                             :hasAnxiolytic ?title .
+                    filter(?smell="{0}")   
+                }}
+                group by ?title    
+            }}
+            union
+            {{
+                select ?title (count(?title) as ?total)
+                where {{ 
+                    ?patient a :Patient;
+                             :hasTasteDisorder ?smell;
+                             :hasAntiDepressant ?title .
+                    filter(?smell="{0}")   
+                }}
+                group by ?title    
+            }}
+        }}
+        order by desc(?total)
                 """.format(source_node))
         return query
 
@@ -707,7 +1068,7 @@ def get_query(id, source_node, target_node, edge):
                 where {{ 
                     ?patient a :Patient;
                           :hasTasteDisorder ?taste;
-                          :hasComorbidities ?comorbidities .
+                          :hasComorbidity ?comorbidities .
                      filter(?taste="{0}")   
                 }}
                 }}
@@ -726,7 +1087,7 @@ def get_query(id, source_node, target_node, edge):
                 where {{ 
                     ?patient a :Patient;
                           :hasSmellDisorder ?smell;
-                          :hasComorbidities ?comorbidities .
+                          :hasComorbidity ?comorbidities .
                      filter(?smell="{0}")   
                 }}
                 }}
@@ -772,12 +1133,14 @@ def get_query(id, source_node, target_node, edge):
                 order by desc(?total)
                """.format(source_node))
         return query
+
+
 # sparql setting
 
 def get_query_result(id, query, hostname, username, password):
     # sparql setting
 
-    # print("host_name= {}, username= {}, password= {}".format(hostname, username, password))
+    print("host_name= {}, username= {}, password= {}".format(hostname, username, password))
     sparql = SPARQLWrapper(hostname)
     sparql.setCredentials(username, password)
     sparql.setReturnFormat(JSON)
@@ -785,13 +1148,14 @@ def get_query_result(id, query, hostname, username, password):
     ret = sparql.queryAndConvert()
     data = []
     print('id= {}'.format(id))
+    print('results bindings= {}'.format(ret["results"]["bindings"]))
     try:
         for r in ret["results"]["bindings"]:
             new_data = {}
-            # print("r= {}".format(ret["results"]["bindings"]))
+            print("r= {}".format(ret["results"]["bindings"]))
             if id == '8':
                 new_data = {
-                    'etiology': r["etiology"]["value"],
+                    'hasEtiology': r["hasEtiology"]["value"],
                     'total': r["total"]["value"],
                 }
                 data.append(new_data)
@@ -803,7 +1167,7 @@ def get_query_result(id, query, hostname, username, password):
                 data.append(new_data)
             elif id == '12':
                 new_data = {
-                    'etiology': r["etiology"]["value"],
+                    'hasEtiology': r["hasEtiology"]["value"],
                     'total': r["total"]["value"],
                 }
                 data.append(new_data)

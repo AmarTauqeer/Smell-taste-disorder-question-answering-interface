@@ -12,9 +12,10 @@ knowledge_graph_layout = html.Div([
                              placeholder='Select nr of displayed nodes',
                              clearable=False,
                              searchable=True,
-                             style={'width': 300},
+
+                             style={'width': 0},
                              ),
-                html.Div("Selected id: "),
+                # html.Div("Selected id: "),
                 html.Div(id="selected-node-id")
             ]))),
     dbc.Row(
@@ -25,7 +26,7 @@ knowledge_graph_layout = html.Div([
                     'name': 'cose-bilkent',
                     'animate': False,
                     'nodeRepulsion': 20000,
-                    'idealEdgeLength': 500,
+                    'idealEdgeLength': 150,
                     'nodeDimensionsIncludeLabels': True
                 },
                 style={
