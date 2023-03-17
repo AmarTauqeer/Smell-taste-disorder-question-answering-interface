@@ -26,7 +26,7 @@ knowledge_graph_layout = html.Div([
                     'name': 'cose-bilkent',
                     'animate': False,
                     'nodeRepulsion': 20000,
-                    'idealEdgeLength': 150,
+                    'idealEdgeLength': 400,
                     'nodeDimensionsIncludeLabels': True
                 },
                 style={

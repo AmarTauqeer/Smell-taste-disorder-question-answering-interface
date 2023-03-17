@@ -1,79 +1,79 @@
-<http://example.com/base/ex:280> <https://schema.org/gender> <"Woman"> .
-<http://example.com/base/ex:4550> <https://schema.org/gender> <"Man"> .
-<http://example.com/base/ex:5820> <https://schema.org/gender> <"Woman"> .
+<http://example.com/base/ex:patientNo 280> <https://schema.org/gender> <"Woman"> .
+<http://example.com/base/ex:patientNo 4550> <https://schema.org/gender> <"Man"> .
+<http://example.com/base/ex:patientNo 5820> <https://schema.org/gender> <"Woman"> .
 
 
 
-<http://example.com/base/ex:280> <http://example.com/base/ex:hasSmellDisorder> <"normosmia"> .
-<http://example.com/base/ex:4550> <http://example.com/base/ex:hasSmellDisorder> <"anosmia"> .
-<http://example.com/base/ex:5820> <http://example.com/base/ex:hasSmellDisorder> <"anosmia"> .
+<http://example.com/base/ex:patientNo 280> <http://example.com/base/ex:hasSmellDisorder> <"normosmia"> .
+<http://example.com/base/ex:patientNo 4550> <http://example.com/base/ex:hasSmellDisorder> <"anosmia"> .
+<http://example.com/base/ex:patientNo 5820> <http://example.com/base/ex:hasSmellDisorder> <"anosmia"> .
 
 
-<http://example.com/base/ex:280> <http://example.com/base/ex:hasTasteDisorder> <"Normogeusia"> .
-<http://example.com/base/ex:4550> <http://example.com/base/ex:hasTasteDisorder> <"Normogeusia"> .
-<http://example.com/base/ex:5820> <http://example.com/base/ex:hasTasteDisorder> <"Normogeusia"> .
+<http://example.com/base/ex:patientNo 280> <http://example.com/base/ex:hasTasteDisorder> <"Normogeusia"> .
+<http://example.com/base/ex:patientNo 4550> <http://example.com/base/ex:hasTasteDisorder> <"Normogeusia"> .
+<http://example.com/base/ex:patientNo 5820> <http://example.com/base/ex:hasTasteDisorder> <"Normogeusia"> .
 
-<http://example.com/base/ex:4550> <http://example.com/base/ex:hasEtiologyType> <"Chronic rhinosinusitis"> .
-<http://example.com/base/ex:5820> <http://example.com/base/ex:hasEtiologyType> <"Idiopathic"> .
-
-
-<http://example.com/base/ex:280> <http://example.com/base/ex:hasSmellTherapy> <"Smell_therapy"> .
-<http://example.com/base/ex:4550> <http://example.com/base/ex:hasSmellTherapy> <"Maybe later"> .
-<http://example.com/base/ex:5820> <http://example.com/base/ex:hasSmellTherapy> <"Smell_therapy"> .
-
-<http://example.com/base/ex:4550> <http://example.com/base/ex:hasEntTherapy> <"Surgery"> .
+<http://example.com/base/ex:patientNo 4550> <http://example.com/base/ex:hasEtiologyType> <"Chronic rhinosinusitis"> .
+<http://example.com/base/ex:patientNo 5820> <http://example.com/base/ex:hasEtiologyType> <"Idiopathic"> .
 
 
-<http://example.com/base/ex:280> <http://example.com/base/ex:hasComplaintDuration> <">10 years"> .
-<http://example.com/base/ex:4550> <http://example.com/base/ex:hasComplaintDuration> <">10 years"> .
-<http://example.com/base/ex:5820> <http://example.com/base/ex:hasComplaintDuration> <"3-24 months"> .
+<http://example.com/base/ex:patientNo 280> <http://example.com/base/ex:hasSmellTherapy> <"Smell_therapy"> .
+<http://example.com/base/ex:patientNo 4550> <http://example.com/base/ex:hasSmellTherapy> <"Maybe later"> .
+<http://example.com/base/ex:patientNo 5820> <http://example.com/base/ex:hasSmellTherapy> <"Smell_therapy"> .
+
+<http://example.com/base/ex:patientNo 4550> <http://example.com/base/ex:hasEntTherapy> <"Surgery"> .
 
 
-<http://example.com/base/ex:280> <http://example.com/base/ex:hasLength> <173> .
-<http://example.com/base/ex:4550> <http://example.com/base/ex:hasLength> <186> .
-<http://example.com/base/ex:5820> <http://example.com/base/ex:hasLength> <165> .
+<http://example.com/base/ex:patientNo 280> <http://example.com/base/ex:hasComplaintDuration> <">10 years"> .
+<http://example.com/base/ex:patientNo 4550> <http://example.com/base/ex:hasComplaintDuration> <">10 years"> .
+<http://example.com/base/ex:patientNo 5820> <http://example.com/base/ex:hasComplaintDuration> <"3-24 months"> .
 
 
-<http://example.com/base/ex:280> <http://example.com/base/ex:hasWeight> <680> .
-<http://example.com/base/ex:4550> <http://example.com/base/ex:hasWeight> <860> .
-<http://example.com/base/ex:5820> <http://example.com/base/ex:hasWeight> <660> .
-
-<http://example.com/base/ex:280> <http://example.com/base/ex:hasBMI> <23> .
-<http://example.com/base/ex:4550> <http://example.com/base/ex:hasBMI> <25> .
-<http://example.com/base/ex:5820> <http://example.com/base/ex:hasBMI> <24> .
-
-<http://example.com/base/ex:5820> <http://example.com/base/ex:hasAntiHypertensive> <"Antihypertensiva"> .
+<http://example.com/base/ex:patientNo 280> <http://example.com/base/ex:hasLength> <173> .
+<http://example.com/base/ex:patientNo 4550> <http://example.com/base/ex:hasLength> <186> .
+<http://example.com/base/ex:patientNo 5820> <http://example.com/base/ex:hasLength> <165> .
 
 
-<http://example.com/base/ex:280> <http://example.com/base/ex:hasAntiDiabetic> <"Antidiabetica"> .
+<http://example.com/base/ex:patientNo 280> <http://example.com/base/ex:hasWeight> <68> .
+<http://example.com/base/ex:patientNo 4550> <http://example.com/base/ex:hasWeight> <86> .
+<http://example.com/base/ex:patientNo 5820> <http://example.com/base/ex:hasWeight> <66> .
 
-<http://example.com/base/ex:4550> <http://example.com/base/ex:hasAsthmaMedication> <"Astmamedicatie"> .
+<http://example.com/base/ex:patientNo 280> <http://example.com/base/ex:hasBMI> <23> .
+<http://example.com/base/ex:patientNo 4550> <http://example.com/base/ex:hasBMI> <25> .
+<http://example.com/base/ex:patientNo 5820> <http://example.com/base/ex:hasBMI> <24> .
 
-<http://example.com/base/ex:280> <http://example.com/base/ex:hasStatin> <"Statine"> .
-
-<http://example.com/base/ex:4550> <http://example.com/base/ex:hasStomachMedication> <"Maagmedicatie"> .
-
-<http://example.com/base/ex:5820> <http://example.com/base/ex:hasNeuroMedication> <"Neuro_medicatie"> .
-
-<http://example.com/base/ex:4550> <http://example.com/base/ex:hasPainMedication> <"Pijnmedicatie"> .
-
-<http://example.com/base/ex:280> <http://example.com/base/ex:hasImmunosuppressant> <"Immunosuppressiva"> .
-<http://example.com/base/ex:5820> <http://example.com/base/ex:hasImmunosuppressant> <"Immunosuppressiva"> .
-
-http://example.com/base/ex:5820> <http://example.com/base/ex:hasThyroidTestosteroneGH> <"Schildklier_Testosteron_GH"> .
-
-<http://example.com/base/ex:4550> <http://example.com/base/ex:hasOsteoporosis> <"Osteoporose"> .
-<http://example.com/base/ex:280> <http://example.com/base/ex:hasOsteoporosis> <"Osteoporose"> .
-
-<http://example.com/base/ex:5820> <http://example.com/base/ex:hasUrological> <"Urologisch"> .
-
-<http://example.com/base/ex:280> <http://example.com/base/ex:hasAntiPsychotic> <"Antipsychotica"> .
-
-<http://example.com/base/ex:4550> <http://example.com/base/ex:hasAnxiolytic> <"Anxiolytica"> .
-<http://example.com/base/ex:5820> <http://example.com/base/ex:hasAnxiolytic> <"Anxiolytica"> .
+<http://example.com/base/ex:patientNo 5820> <http://example.com/base/ex:hasAntiHypertensive> <"Antihypertensiva"> .
 
 
-<http://example.com/base/ex:4550> <http://example.com/base/ex:hasAntiBiotic> <"Antibiotica"> .
+<http://example.com/base/ex:patientNo 280> <http://example.com/base/ex:hasAntiDiabetic> <"Antidiabetica"> .
 
-<http://example.com/base/ex:280> <http://example.com/base/ex:hasComorbidity> <"Pulmonal disease"> .
+<http://example.com/base/ex:patientNo 4550> <http://example.com/base/ex:hasAsthmaMedication> <"Astmamedicatie"> .
+
+<http://example.com/base/ex:patientNo 280> <http://example.com/base/ex:hasStatin> <"Statine"> .
+
+<http://example.com/base/ex:patientNo 4550> <http://example.com/base/ex:hasStomachMedication> <"Maagmedicatie"> .
+
+<http://example.com/base/ex:patientNo 5820> <http://example.com/base/ex:hasNeuroMedication> <"Neuro_medicatie"> .
+
+<http://example.com/base/ex:patientNo 4550> <http://example.com/base/ex:hasPainMedication> <"Pijnmedicatie"> .
+
+<http://example.com/base/ex:patientNo 280> <http://example.com/base/ex:hasImmunosuppressant> <"Immunosuppressiva"> .
+<http://example.com/base/ex:patientNo 5820> <http://example.com/base/ex:hasImmunosuppressant> <"Immunosuppressiva"> .
+
+http://example.com/base/ex:patientNo 5820> <http://example.com/base/ex:hasThyroidTestosteroneGH> <"Schildklier_Testosteron_GH"> .
+
+<http://example.com/base/ex:patientNo 4550> <http://example.com/base/ex:hasOsteoporosis> <"Osteoporose"> .
+<http://example.com/base/ex:patientNo 280> <http://example.com/base/ex:hasOsteoporosis> <"Osteoporose"> .
+
+<http://example.com/base/ex:patientNo 5820> <http://example.com/base/ex:hasUrological> <"Urologisch"> .
+
+<http://example.com/base/ex:patientNo 280> <http://example.com/base/ex:hasAntiPsychotic> <"Antipsychotica"> .
+
+<http://example.com/base/ex:patientNo 4550> <http://example.com/base/ex:hasAnxiolytic> <"Anxiolytica"> .
+<http://example.com/base/ex:patientNo 5820> <http://example.com/base/ex:hasAnxiolytic> <"Anxiolytica"> .
+
+
+<http://example.com/base/ex:patientNo 4550> <http://example.com/base/ex:hasAntiBiotic> <"Antibiotica"> .
+
+<http://example.com/base/ex:patientNo 280> <http://example.com/base/ex:hasComorbidity> <"Pulmonal disease"> .
 
