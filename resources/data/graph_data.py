@@ -13,12 +13,12 @@ graph_4=[{'data': {'id': 'What', 'label': 'What'}},
          {'data': {'source': 'Normogeusia', 'target': 'What','label': 'medicationType', 'uri': ''}}]
 
 graph_5=[{'data': {'id': 'What', 'label': 'What'}},
-         {'data': {'id': 'Normogeusia', 'label': 'Normogeusia'}},
-         {'data': {'source': 'Normogeusia', 'target': 'What','label': 'hasComorbidity', 'uri': ''}}]
+         {'data': {'id': 'normosmia', 'label': 'normosmia'}},
+         {'data': {'source': 'normosmia', 'target': 'What','label': 'hasComorbidity', 'uri': ''}}]
 
 graph_6=[{'data': {'id': 'What', 'label': 'What'}},
-         {'data': {'id': 'normosmia', 'label': 'normosmia'}},
-         {'data': {'source': 'normosmia', 'target': 'What','label': 'hasComorbidity', 'uri': ''}}]\
+         {'data': {'id': 'Normogeusia', 'label': 'Normogeusia'}},
+         {'data': {'source': 'Normogeusia', 'target': 'What','label': 'hasComorbidity', 'uri': ''}}]\
 
 
 graph_7=[{'data': {'id': 'What', 'label': 'What'}},

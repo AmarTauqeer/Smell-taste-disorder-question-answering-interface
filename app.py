@@ -1128,9 +1128,9 @@ def get_query(id, source_node, target_node, edge):
                 select *
                 where {{ 
                     ?patient a :Patient;
-                          :hasTasteDisorder ?taste;
+                          :hasSmellDisorder ?smell;
                           :hasComorbidity ?comorbidities .
-                     filter(?taste="{0}")   
+                     filter(?smell="{0}")   
                 }}
                 }}
                 group by ?comorbidities
@@ -1147,9 +1147,9 @@ def get_query(id, source_node, target_node, edge):
                 select *
                 where {{ 
                     ?patient a :Patient;
-                          :hasSmellDisorder ?smell;
+                          :hasTasteDisorder ?taste;
                           :hasComorbidity ?comorbidities .
-                     filter(?smell="{0}")   
+                     filter(?taste="{0}")   
                 }}
                 }}
                 group by ?comorbidities
