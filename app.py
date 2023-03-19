@@ -166,6 +166,64 @@ app.layout = html.Div([
           "background": "linear-gradient(to bottom, #66ccff 17%, #ccffff 100%)"})
 
 
+def get_list_of_smell_disorder(hostname, username, password):
+    # print("host_name= {}, username= {}, password= {}".format(hostname, username, password))
+    sparql = SPARQLWrapper(hostname)
+    sparql.setCredentials(username, password)
+    # sparql.setHTTPAuth(BASIC)
+    sparql.setReturnFormat(JSON)
+
+    query = textwrap.dedent("""
+    PREFIX :  <http://example.com/base/>  
+    select distinct ?x 
+    where {{
+
+            ?patient a :Patient;
+                     :hasSmellDisorder ?x .
+        }}
+           """)
+
+    sparql.setQuery(query)
+    data = []
+    ret = sparql.queryAndConvert()
+    for r in ret["results"]["bindings"]:
+        new_data = {
+            'label': r['x']['value'],
+            'value': r['x']['value']
+        }
+        data.append(new_data)
+    return data
+
+
+def get_list_of_taste_disorder(hostname, username, password):
+    # print("host_name= {}, username= {}, password= {}".format(hostname, username, password))
+    sparql = SPARQLWrapper(hostname)
+    sparql.setCredentials(username, password)
+    # sparql.setHTTPAuth(BASIC)
+    sparql.setReturnFormat(JSON)
+
+    query = textwrap.dedent("""
+    PREFIX :  <http://example.com/base/>  
+    select distinct ?x 
+    where {{
+
+            ?patient a :Patient;
+                     :hasTasteDisorder ?x .
+        }}
+           """)
+
+    sparql.setQuery(query)
+    data = []
+    ret = sparql.queryAndConvert()
+    for r in ret["results"]["bindings"]:
+        new_data = {
+            'label': r['x']['value'],
+            'value': r['x']['value']
+        }
+        data.append(new_data)
+    return data
+
+
 def get_ranked_labels(question_id, data, node):
     global labels
     labels = []
@@ -209,6 +267,7 @@ def label_callback(data, value, node):
         no_selection = data is None or len(data) == 0
         select_disabled = data is None or len(data) != 1
         labels, label = get_ranked_labels(qid, data, node)
+        print("labels ={} and label= {}".format(labels, label))
         return labels, label, select_disabled, no_selection
 
 
@@ -231,24 +290,23 @@ def display_selected_node_data(data, value):
 #               Input('input-dropdown', 'value')
 #               )
 # def display_selected_edge_data(data, value):
-#     # print("edge data ={} and value= {}".format(data, value))
+#     print("edge data ={} and value= {}".format(data, value))
 #     return label_callback(data, value, True)
 
 
 @app.callback(Output('selected-node-id', 'children'),
               Input('knowledge-graph', 'selectedEdgeData'))
 def show_edge_id(selected_edge):
-    # print(f"%%%%%%%%%%%%%%%%%%%{selected_edge}")
-    # if selected_edge is not None and len(selected_edge) == 1:
-    #     return selected_edge[0]["uri"]
+    if selected_edge is not None and len(selected_edge) == 1:
+        return selected_edge[0]["uri"]
     return ""
 
 
 @app.callback(Output('selected-node-id', 'children'),
               Input('knowledge-graph', 'selectedNodeData'))
 def show_node_id(selected_node):
-    # if selected_node is not None and len(selected_node) == 1:
-    #     return selected_node[0]["id"]
+    if selected_node is not None and len(selected_node) == 1:
+        return selected_node[0]["id"]
     return ""
 
 
@@ -275,6 +333,7 @@ def show_node_id(selected_node):
 
 @app.callback(
     Output('question-graph', 'elements'),
+    # Output('delete-button', 'disabled'),
     Input('select-label-dropdown', 'value'),
     State('question-graph', 'selectedEdgeData'),
     State('question-graph', 'selectedNodeData'),
@@ -285,7 +344,6 @@ def delete_nodes_edges(value, edges, nodes, elements):
     global update_state_
     global node_or_edge_
 
-    print("selected node")
     if value is None:
         return elements
     if edges is None:
@@ -293,73 +351,93 @@ def delete_nodes_edges(value, edges, nodes, elements):
     if nodes is None:
         nodes = []
     elements_to_change = edges + nodes
-    print(f"node={nodes} and edge={edges}")
 
-    # if len(elements_to_change) != 1:
-    #     return elements
-    # id_to_change = elements_to_change[0]['id']
+    if len(elements_to_change) != 1:
+        return elements
+
+    id_to_change = elements_to_change[0]['id']
     update_state_ = "true"
     data_table_arr = []
-    # print('elements = {}'.format(elements))
-    # print('elements_to_change = {}'.format(elements_to_change))
-    for element in elements:
-        # if element['data']['id'] == id_to_change:
-        #     element['data']['label'] = value
 
-        if len(nodes) > 0:
-            print('node data')
-            edge = nodes
-            print('node data={}'.format(edge))
-        else:
-            print('edge data')
-            edge = edges
+    # print('elements_to_change = {}'.format(elements_to_change))
+
+    # print(f"elements={elements}")
+    # print(f'edge data={elements[2]["data"]["label"]}')
+
+    for element in elements:
+        if element['data']['id'] == id_to_change:
+            element['data']['label'] = value
+            print(f"value={value}")
+            node = value
+            # print('edge data={}'.format(edge))
+            # if len(nodes) > 0 and len(edges) == 0:
+            #     edge = ""
+            # clear the data table array
+
+            data_table_arr = []
+            # print("elements = {}".format(elements))
+            source_node = elements[1]["data"]["label"]
+            target_node = elements[2]["data"]["target"]
+
+            data = get_query(graph_id_, source_node, target_node, node)
+            result = get_query_result(graph_id_, data, hostname, username, password)
+            # print("change result= {}".format(result))
+            if len(result) != 0:
+
+                for r in result:
+                    types = ""
+                    if "hasEtiology" in r:
+                        types = r['hasEtiology']
+                    elif 'medication' in r:
+                        types = r['medication']
+                    elif 'complaint_duration' in r:
+                        types = r['complaint_duration']
+                    elif 'comorbidities' in r:
+                        types = r['comorbidities']
+
+                    new_data = {
+                        'types': types,
+                        'total': r['total']
+                    }
+                    data_table_arr.append(new_data)
+                break
+        if len(edges)!=0:
+
+            # print(f"edge elements={edges[0]['label']}")
+            # print(f"edge data source={edges[0]['source']}")
+            edge = edges[0]['label']
             print('edge data={}'.format(edge))
 
-        # if len(nodes) > 0 and len(edges) == 0:
-        #     edge = ""
-        # clear the data table array
-        data_table_arr = []
-        # print("elements = {}".format(elements))
-        #
-        # if len(nodes) > 0:
-        #     source_node = elements[1]["data"]["label"]
-        #     print(f"source node={source_node}")
-        #     target_node = elements[2]["data"]["target"]
-        # else:
-        #     source_node = elements[1]["data"]["label"]
-        #     print(f"source node --- edge ={source_node}")
-        #     target_node = elements[2]["data"]["target"]
-        source_node = elements[1]["data"]["label"]
-        print(f"source node={source_node}")
-        target_node = elements[2]["data"]["target"]
+            data_table_arr = []
+            # print("elements = {}".format(elements))
+            source_node = element['data']['label']
+            target_node = edges[0]['target']
 
-        data = get_query(graph_id_, source_node, target_node, edge)
-        # print("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@")
-        # print(data)
-        # print("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@")
-        result = get_query_result(graph_id_, data, hostname, username, password)
-        # print("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@")
-        # print(result)
-        # print("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@")
-        if len(result) != 0:
+            data = get_query(graph_id_, source_node, target_node, edge)
+            # print("data= {}".format(data))
+            result = get_query_result(graph_id_, data, hostname, username, password)
+            # print("change result= {}".format(result))
+            if len(result) != 0:
 
-            for r in result:
-                types = ""
-                if "hasEtiology" in r:
-                    types = r['hasEtiology']
-                elif 'medication' in r:
-                    types = r['medication']
-                elif 'complaint_duration' in r:
-                    types = r['complaint_duration']
-                elif 'comorbidities' in r:
-                    types = r['comorbidities']
+                for r in result:
+                    types = ""
+                    if "hasEtiology" in r:
+                        types = r['hasEtiology']
+                    elif 'medication' in r:
+                        types = r['medication']
+                    elif 'complaint_duration' in r:
+                        types = r['complaint_duration']
+                    elif 'comorbidities' in r:
+                        types = r['comorbidities']
 
-                new_data = {
-                    'types': types,
-                    'total': r['total']
-                }
-                data_table_arr.append(new_data)
-        break
+                    new_data = {
+                        'types': types,
+                        'total': r['total']
+                    }
+                    # print(f"new data={new_data}")
+                    data_table_arr.append(new_data)
+                break
+
     return elements
 
 
@@ -546,12 +624,9 @@ def open_kg(n_clicks):
     Output("question", "children"),
     Input("open-qg", "n_clicks"),
     Input('input-dropdown', 'value'),
-
 )
 def open_qg(n_clicks, value):
     global value_str
-
-    print(f"value ={value}")
 
     sub_list_question = ["><question_8.nxhd>", "><question_9.nxhd>", "><question_12.nxhd>", "><question_13.nxhd>",
                          "><question_14.nxhd>", "><question_15.nxhd>", "><question_16.nxhd>", "><question_17.nxhd>"]
@@ -576,15 +651,14 @@ def open_qg(n_clicks):
     return n_clicks > 0
 
 
-@app.callback(
-    Output("view-export-graph", "elements"),
-    Input("select-export", "value")
-)
-def generate_export_graph(export_file):
-    edges, _ = graph_utils_export.load_file(export_file)
-
-    return graph_utils_export.get_dash_graph(edges)
-
+# @app.callback(
+#     Output("view-export-graph", "elements"),
+#     Input("select-export", "value")
+# )
+# def generate_export_graph(export_file):
+#     edges, _ = graph_utils_export.load_file(export_file)
+#
+#     return graph_utils_export.get_dash_graph(edges)
 
 # @app.callback(
 #     Input('export-button', 'n_clicks'),
@@ -605,22 +679,20 @@ def generate_export_graph(export_file):
     Output("modal-answer-dialog", "is_open"),
     Output("data-table", "data"),
     Input('answer-button', 'n_clicks'),
-
 )
 def toggle_model(n_clicks):
     # print("graph_= {}".format(graph_))
     source_node = graph_[2]["data"]["source"]
     target_node = graph_[2]["data"]["target"]
     edge = graph_[2]["data"]["label"]
-    # print("data table length= {}, update= {}".format(len(data_table_arr), update_state_))
+    print("data table length= {}, update= {}".format(len(data_table_arr), update_state_))
     if len(data_table_arr) == 0:  # and update_state_ == "false":
         if node_or_edge_ == "node":
             edge = ""
         data = get_query(graph_id_, source_node, target_node, edge)
-        # print("data= {}".format(data))
 
         result = get_query_result(graph_id_, data, hostname, username, password)
-        # print("result= {}".format(result))
+        print("result= {}".format(result))
         arr = []
         for r in result:
             types = ""
@@ -642,8 +714,8 @@ def toggle_model(n_clicks):
     return n_clicks > 0, data_table_arr
 
 
-def get_list_of_smell_disorder(hostname, username, password):
-    # print("host_name= {}, username= {}, password= {}".format(hostname, username, password))
+def get_list_of_disorder(hostname, username, password):
+    print("host_name= {}, username= {}, password= {}".format(hostname, username, password))
     sparql = SPARQLWrapper(hostname)
     sparql.setCredentials(username, password)
     # sparql.setHTTPAuth(BASIC)
@@ -651,42 +723,28 @@ def get_list_of_smell_disorder(hostname, username, password):
 
     query = textwrap.dedent("""
     PREFIX :  <http://example.com/base/>  
-    select distinct ?x 
-    where {{
-    
-            ?patient a :Patient;
-                     :hasSmellDisorder ?x .
+    select * 
+    where{{
+        {{
+            select distinct ?x 
+            where {{
+
+                    ?patient a :Patient;
+                             :hasSmellDisorder ?x .
+            }}
+            }}
+            UNION
+        {{
+            select distinct ?x 
+            where {{
+                    ?patient a :Patient;
+                             :hasTasteDisorder ?x .
+
+                }}
         }}
-           """)
 
-    sparql.setQuery(query)
-    data = []
-    ret = sparql.queryAndConvert()
-    for r in ret["results"]["bindings"]:
-        new_data = {
-            'label': r['x']['value'],
-            'value': r['x']['value']
-        }
-        data.append(new_data)
-    return data
-
-
-def get_list_of_taste_disorder(hostname, username, password):
-    # print("host_name= {}, username= {}, password= {}".format(hostname, username, password))
-    sparql = SPARQLWrapper(hostname)
-    sparql.setCredentials(username, password)
-    # sparql.setHTTPAuth(BASIC)
-    sparql.setReturnFormat(JSON)
-
-    query = textwrap.dedent("""
-    PREFIX :  <http://example.com/base/>  
-    select distinct ?x 
-    where {{
-    
-            ?patient a :Patient;
-                     :hasTasteDisorder ?x .
-        }}
-           """)
+    }}
+                    """)
 
     sparql.setQuery(query)
     data = []
@@ -1287,6 +1345,7 @@ def get_query_result(id, query, hostname, username, password):
         print(e)
 
 
+
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0')
-    # app.run_server(debug=True)
+    # app.run(debug=True)

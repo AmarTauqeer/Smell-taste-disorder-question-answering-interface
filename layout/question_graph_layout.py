@@ -16,6 +16,7 @@ question_graph_layout = html.Div([
                              disabled=True
                              ),
                 html.Button('Delete', id='delete-button', n_clicks=0, disabled=True, style=dict(display='none')),
+                # html.Button('Delete', id='delete-button', n_clicks=0, disabled=True),
                 # html.Button('Add nodes/edges', id='add-button', n_clicks=0, disabled=False),
                 html.Button('Answer', id='answer-button', n_clicks=0, disabled=False),
             ]))),
