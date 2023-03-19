@@ -38,8 +38,7 @@ graph_ = None
 data_table_arr = []
 update_state_ = "false"
 node_or_edge_ = "node"
-labels=[]
-
+labels = []
 
 load_dotenv('.env')
 hostname = os.getenv("HOST_URI_GET")
@@ -52,47 +51,64 @@ graph_utils_export = GraphUtils()
 app.title = "Question understanding interface"
 
 app.layout = html.Div([
-    dbc.Row(
-        dbc.Col(html.H2(
-            children='Questioning/Answering Interface for Smell and Taste Disorder',
-            style={
-                'textAlign': 'center',
-            }
-        ), width=4), justify="center", align="center", style={"margin": "8px", "paddingTop": "10%"}),
-    dbc.Row(
-        dbc.Col(html.Header(
-            "Select a question below and have a look on the knowledge graph or the generated question graph",
-            style={
-                'textAlign': 'center',
-                'fontSize': '18px',
-            }
+    html.Br(),
+    html.Br(),
+    html.Br(),
 
-        ), width=4), justify="center", align="center", style={"marginTop": "10%"}),
+    dbc.Row(
+        dbc.Col(html.H1(
+            children='Questioning/Answering Interface for Smell and Taste Disorder',
+        )), className='col-lg-12 text-center mt-5'),
+    # dbc.Row(
+    #     dbc.Col(html.H2(
+    #         children='Questioning/Answering Interface for Smell and Taste Disorder',
+    #         style={
+    #             'textAlign': 'center',
+    #         },
+    #     ), width=4), justify="center", align="center", style={"margin": "8px", "paddingTop": "10%"}),
+    dbc.Row(
+        dbc.Col(html.H5(
+            "Select a question below and have a look on the knowledge graph or the generated question graph",
+        )), className='col-lg-12 text-center mt-5'),
+    # dbc.Row(
+    #     dbc.Col(html.Header(
+    #         "Select a question below and have a look on the knowledge graph or the generated question graph",
+    #         style={
+    #             'textAlign': 'center',
+    #             'fontSize': '18px',
+    #         }
+    #
+    #     ), width=4), justify="center", align="center", style={"marginTop": "10%"}),
     dbc.Row([
-        dbc.Col(question_select, width=6),
+        dbc.Col(question_select, className='col-lg-6 mb-5'),
     ],
-        justify="center",
-        align="center", style={"margin": "8px"}),
+        className="row justify-content-md-center"),
+    # dbc.Row([
+    #     dbc.Col(question_select, width=6),
+    # ],
+    #     justify="center",
+    #     align="center", style={"margin": "8px"}),
     dbc.Row([
         dbc.Col(
             dbc.Button("Knowledge graph visualization", id="open-kg", n_clicks=0, disabled=True, color="primary",
                        style={'width': '160px', 'height': '70px', 'textAlign': 'center',
-                              'borderRadius': '15px', 'fontWeight': 'bold'}),
-            width=2),
+                              'borderRadius': '15px', 'fontWeight': 'bold'}
+                       ),
+            className='col-auto'),
         dbc.Col(
             dbc.Button("Question graph", id="open-qg", n_clicks=0, disabled=True, color="success",
                        style={'width': '150px', 'height': '70px', 'textAlign': 'center', 'borderRadius': '15px',
                               'fontWeight': 'bold'})
-            , width=2),
+            , className='col-auto'),
         # dbc.Col(
         #     dbc.Button("Question insight", id="open-view-export", n_clicks=0, color="success",
         #                style={'width': '110px', 'height': '80px', 'textAlign': 'center'})
         #     , width=1),
         dbc.Col(dbc.Button("? Help", id="open-help", n_clicks=0, color="info",
                            style={'width': '150px', 'height': '70px', 'textAlign': 'center', 'borderRadius': '15px',
-                                  'fontWeight': 'bold','color':'#fff'}),
-                width=2)
-    ], justify="center", align="center", style={'textAlign': 'center'}),
+                                  'fontWeight': 'bold', 'color': '#fff'}),
+                className='col-auto')
+    ], className="d-flex justify-content-center"),
     dbc.Modal(
         [
             dbc.ModalHeader(dbc.ModalTitle("Subset Knowledge Graph")),
@@ -152,7 +168,7 @@ app.layout = html.Div([
 
 def get_ranked_labels(question_id, data, node):
     global labels
-    labels=[]
+    labels = []
     print("question-id = {}, data ={} and node= {}".format(question_id, data, node))
     # labels=""
     if data is None or len(data) != 1:
@@ -161,7 +177,7 @@ def get_ranked_labels(question_id, data, node):
     # print(f"label={label}")
     # labels = graph_utils.get_ranked_rdfs_labels(question_id, data[0]['label'], node)
     print("list of smell and taste disorder")
-    if label not in labels and label=="What" and node==True:
+    if label not in labels and label == "What" and node == True:
         labels.insert(0, {'label': label, 'value': label})
         # print(f"TRUE NODE labels={labels}")
     elif node == False:
@@ -170,10 +186,10 @@ def get_ranked_labels(question_id, data, node):
         labels.insert(0, {'label': label, 'value': label})
 
     else:
-        if question_id in["8","9","14","16"] and node==True:
+        if question_id in ["8", "9", "14", "16"] and node == True:
             print("smell")
             labels = get_list_of_smell_disorder(hostname, username, password)
-        elif question_id in["12","13","15","17"] and node==True:
+        elif question_id in ["12", "13", "15", "17"] and node == True:
             print("taste")
             labels = get_list_of_taste_disorder(hostname, username, password)
 
@@ -292,7 +308,7 @@ def delete_nodes_edges(value, edges, nodes, elements):
 
         if len(nodes) > 0:
             print('node data')
-            edge=nodes
+            edge = nodes
             print('node data={}'.format(edge))
         else:
             print('edge data')
@@ -535,6 +551,8 @@ def open_kg(n_clicks):
 def open_qg(n_clicks, value):
     global value_str
 
+    print(f"value ={value}")
+
     sub_list_question = ["><question_8.nxhd>", "><question_9.nxhd>", "><question_12.nxhd>", "><question_13.nxhd>",
                          "><question_14.nxhd>", "><question_15.nxhd>", "><question_16.nxhd>", "><question_17.nxhd>"]
     sub_list_question_no = ["<8><", "<9><", "<12><", "<13><", "<14><", "<15><", "<16><", "<17><"]
@@ -651,6 +669,8 @@ def get_list_of_smell_disorder(hostname, username, password):
         }
         data.append(new_data)
     return data
+
+
 def get_list_of_taste_disorder(hostname, username, password):
     # print("host_name= {}, username= {}, password= {}".format(hostname, username, password))
     sparql = SPARQLWrapper(hostname)
@@ -681,7 +701,7 @@ def get_list_of_taste_disorder(hostname, username, password):
 
 
 def get_query(id, source_node, target_node, edge):
-    print("source_node = {}, target node= {}, edge= {}".format(source_node, target_node, edge))
+    # print("source_node = {}, target node= {}, edge= {}".format(source_node, target_node, edge))
     if id == '8':
         query = ""
         query = textwrap.dedent("""
@@ -1268,5 +1288,5 @@ def get_query_result(id, query, hostname, username, password):
 
 
 if __name__ == '__main__':
-    # app.run(debug=True, host='0.0.0.0')
-    app.run_server(debug=True)
+    app.run(debug=True, host='0.0.0.0')
+    # app.run_server(debug=True)

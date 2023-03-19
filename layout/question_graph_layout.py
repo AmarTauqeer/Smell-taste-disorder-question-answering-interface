@@ -15,11 +15,10 @@ question_graph_layout = html.Div([
                              style={'width': 400},
                              disabled=True
                              ),
-                html.Button('Delete', id='delete-button', n_clicks=0, disabled=True, style = dict(display='none')),
+                html.Button('Delete', id='delete-button', n_clicks=0, disabled=True, style=dict(display='none')),
                 # html.Button('Add nodes/edges', id='add-button', n_clicks=0, disabled=False),
                 html.Button('Answer', id='answer-button', n_clicks=0, disabled=False),
             ]))),
-    html.Br(),
     html.Br(),
     dbc.Row(
         html.Div([
@@ -43,14 +42,14 @@ question_graph_layout = html.Div([
                 },
                 style={
                     "width": "800px",
-                    "height": "calc(100vh - 600px)",
+                    "height": "calc(100vh - 500px)",
                     # "height": "calc(100vh - 210px)",
                 },
                 stylesheet=[
                     {'selector': 'edge', 'style': {'label': 'data(label)'}, 'text-wrap': 'wrap'},
                     {'selector': 'node', 'style': {'label': 'data(label)'}, 'text-wrap': 'wrap'},
                 ]
-            ), width=12)
+            ), className="d-flex justify-content-center")
         ],
     ),
     dbc.Modal(
