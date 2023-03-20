@@ -27,7 +27,8 @@ knowledge_graph_layout = html.Div([
                     'animate': False,
                     'nodeRepulsion': 20000,
                     'idealEdgeLength': 400,
-                    'nodeDimensionsIncludeLabels': True
+                    'nodeDimensionsIncludeLabels': True,
+                    'directed': True,
                 },
                 style={
                     "width": "100%",
@@ -37,11 +38,23 @@ knowledge_graph_layout = html.Div([
                 stylesheet=[
                     {'selector': 'edge', 'style': {'label': 'data(label)', 'curve-style': 'haystack',
                                                    'haystack-radius': 0,
-                                                   'width': 5,
+                                                   'width': 3,
                                                    'opacity': 0.5,
-                                                   'line-color': '#a8eae5'}, 'text-wrap': 'wrap'},
-                    {'selector': 'node', 'style': {'label': 'data(label)', 'background-color': '#30c9bc'},
-                     'text-wrap': 'wrap'},
+                                                   'line-color': 'lightgreen'}, 'text-wrap': 'wrap'},
+                    {
+                        'selector': '.blue',
+                        'style': {
+                            'color': 'blue',
+                            'shape': 'triangle',
+
+                        }
+                    }
+                    ,
+                    {'selector': 'node', 'style': {'label': 'data(label)'}, 'text-wrap': 'wrap'},
+                    {'selector': '.red',
+                     'style': {'background-color': 'red', 'color': 'red', 'fontWeight': 'bold' }},
+                    {'selector': '.green', 'style': {'background-color': 'green', 'color': 'green', 'shape': 'rectangle',}}
+
                 ]
             ), width=12),
 

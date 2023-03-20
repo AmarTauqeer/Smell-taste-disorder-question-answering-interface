@@ -567,6 +567,7 @@ def load_question_files(value):
             graph_ = graph_data.graph_10
 
         # graph_ = generate_question_graph_v2(nlp(gr[1]))
+        # print(f"graph_={graph_}")
 
         nodes_select_enabled, nodes_to_display, nodes_list = calculate_nr_of_nodes(nr_of_edges)
 

@@ -92,12 +92,21 @@ class Graph:
         for v in self.node_neighbors:
             if current_nr > nr_of_displayed_nodes:
                 break
-            nodes.append({'data': {'id': v, 'label': self.node_attr[v]['label']}})
+            # print(f"node vector={v}")
+
+            if v in ["http://example.com/base/ex:patientNo 280", "http://example.com/base/ex:patientNo 4550"
+                , "http://example.com/base/ex:patientNo 5820"]:
+                nodes.append({'data': {'id': v, 'label': self.node_attr[v]['label']}, 'classes': 'red'})
+            else:
+                nodes.append({'data': {'id': v, 'label': self.node_attr[v]['label']}, 'classes': 'green'})
+
+            # nodes.append({'data': {'id': v, 'label': self.node_attr[v]['label']}, 'classes': f"{classes}"})
             inserted_nodes.add(v)
             current_nr += 1
 
         for e in self.edge_attr:
             # print("e[0] {} e[1] {} self.edge_attr[e] {}".format(e[0],e[1],self.edge_attr[e]))
             if e[0] in inserted_nodes and e[1] in inserted_nodes:
-                nodes.append({'data': {'source': e[0], 'target': e[1], 'label': self.edge_attr[e]['label'], 'uri': self.edge_attr[e]['uri']}})
+                nodes.append({'data': {'source': e[0], 'target': e[1], 'label': self.edge_attr[e]['label'],
+                                       'uri': self.edge_attr[e]['uri']}, 'classes': 'blue'})
         return nodes
