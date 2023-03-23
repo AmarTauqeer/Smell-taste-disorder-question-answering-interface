@@ -17,10 +17,13 @@ A user interface is offered in which one can choose from a list of questions. Su
       1. Using the items above the question graph it is possible to edit the question graph
 5. If you have any issues, have a look on the help menu using the "?" button
 
-## UI
+## User interface (UI)
 ![](/screenshots/Ui.png)
 
-## Subset of knowledge graph
+## Question graph with resuts
+![](/screenshots/3.png)
+
+## Subset of knowledge graph via UI
 ![](/screenshots/subset-kg.png)
 
 ## Extended ontology overview
