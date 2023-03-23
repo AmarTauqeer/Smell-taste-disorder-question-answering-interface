@@ -18,10 +18,10 @@ A user interface is offered in which one can choose from a list of questions. Su
 5. If you have any issues, have a look on the help menu using the "?" button
 
 ## UI
-[embed](/screenshots/UI.pdf)[/embed]
+![](/screenshots/Ui.png)
 
 ## Subset of knowledge graph
-[embed](/screenshots/subset-kg.pdf)[/embed]
+![](/screenshots/subset-kg.png)
 
 ## Extended ontology overview
 ![](/screenshots/Extended-ontology-overview.png)
