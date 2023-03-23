@@ -16,3 +16,12 @@ A user interface is offered in which one can choose from a list of questions. Su
    2. Use the "Open question graph" button for generating a question graph
       1. Using the items above the question graph it is possible to edit the question graph
 5. If you have any issues, have a look on the help menu using the "?" button
+
+## UI
+![](/screenshots/UI.png)
+
+## Subset of knowledge graph
+![](/screenshots/subset-kg.pdf)
+
+## Extended ontology overview
+![](/screenshots/Extended-ontology-overview.png)
