@@ -23,11 +23,11 @@ graph_6=[{'data': {'id': 'What', 'label': 'What'}},
 
 graph_7=[{'data': {'id': 'What', 'label': 'What'}},
          {'data': {'id': 'anosmia', 'label': 'Smell Disorder'}},
-         {'data': {'source': 'anosmia', 'target': 'What','label': 'hasComplaintsDuration', 'uri': ''}}]
+         {'data': {'source': 'anosmia', 'target': 'What','label': 'hasDurationOfComplaint', 'uri': ''}}]
 
 graph_8=[{'data': {'id': 'What', 'label': 'What'}},
          {'data': {'id': 'Hypogeusia', 'label': 'Hypogeusia'}},
-         {'data': {'source': 'Hypogeusia', 'target': 'What','label': 'hasComplaintsDuration', 'uri': ''}}]
+         {'data': {'source': 'Hypogeusia', 'target': 'What','label': 'hasDurationOfComplaint', 'uri': ''}}]
 
 graph_9=[{'data': {'id': 'What', 'label': 'What'}},
          {'data': {'id': 'Normogeusia', 'label': 'Normogeusia'}},

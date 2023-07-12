@@ -24,9 +24,9 @@
 <http://example.com/base/ex:patientNo 4550> <http://example.com/base/ex:hasEntTherapy> <"Surgery"> .
 
 
-<http://example.com/base/ex:patientNo 280> <http://example.com/base/ex:hasComplaintDuration> <">10 years"> .
-<http://example.com/base/ex:patientNo 4550> <http://example.com/base/ex:hasComplaintDuration> <">10 years"> .
-<http://example.com/base/ex:patientNo 5820> <http://example.com/base/ex:hasComplaintDuration> <"3-24 months"> .
+<http://example.com/base/ex:patientNo 280> <http://example.com/base/ex:hasDurationOfComplaint> <">10 years"> .
+<http://example.com/base/ex:patientNo 4550> <http://example.com/base/ex:hasDurationOfComplaint> <">10 years"> .
+<http://example.com/base/ex:patientNo 5820> <http://example.com/base/ex:hasDurationOfComplaint> <"3-24 months"> .
 
 
 <http://example.com/base/ex:patientNo 280> <http://example.com/base/ex:hasLength> <173> .
@@ -76,4 +76,6 @@ http://example.com/base/ex:patientNo 5820> <http://example.com/base/ex:hasThyroi
 <http://example.com/base/ex:patientNo 4550> <http://example.com/base/ex:hasAntiBiotic> <"Antibiotica"> .
 
 <http://example.com/base/ex:patientNo 280> <http://example.com/base/ex:hasComorbidity> <"Pulmonal disease"> .
+
+<http://example.com/base/ex:patientNo 5820> <http://example.com/base/ex:hasParosmia> <2> .
 

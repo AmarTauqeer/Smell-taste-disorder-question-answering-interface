@@ -1246,7 +1246,7 @@ def get_query(id, source_node, target_node, edge):
                         where {{ 
                                 ?patient a :Patient;
                                          :hasSmellDisorder ?smell;
-                                         :hasComplaintDuration ?complaint_duration .
+                                         :hasDurationOfComplaint ?complaint_duration .
                                 filter(?smell="{0}")   
                             }}
                     }}
@@ -1265,7 +1265,7 @@ def get_query(id, source_node, target_node, edge):
                         where {{ 
                                 ?patient a :Patient;
                                          :hasTasteDisorder ?taste;
-                                         :hasComplaintDuration ?complaint_duration .
+                                         :hasDurationOfComplaint ?complaint_duration .
                                 filter(?taste="{0}")   
                             }}
                     }}

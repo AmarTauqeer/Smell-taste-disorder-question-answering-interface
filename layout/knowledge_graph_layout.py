@@ -36,11 +36,15 @@ knowledge_graph_layout = html.Div([
                     "display": "none"
                 },
                 stylesheet=[
-                    {'selector': 'edge', 'style': {'label': 'data(label)', 'curve-style': 'haystack',
-                                                   'haystack-radius': 0,
+                    {'selector': 'edge', 'style': {'label': 'data(label)', 'curve-style': 'bezier',
+                                                   # 'haystack-radius': 5,
                                                    'width': 3,
-                                                   'opacity': 0.5,
-                                                   'line-color': 'lightgreen'}, 'text-wrap': 'wrap'},
+                                                   'opacity': 1,
+                                                   'fontSize': '30px',
+                                                   'line-color': 'lightgreen',
+                                                   'source-arrow-color': 'red',
+                                                   'source-arrow-shape': 'triangle',
+                                                   'source-arrow-size': '150px'}, 'text-wrap': 'wrap'},
                     {
                         'selector': '.blue',
                         'style': {
@@ -50,34 +54,39 @@ knowledge_graph_layout = html.Div([
                         }
                     }
                     ,
-                    {'selector': 'node', 'style': {'label': 'data(label)'}, 'text-wrap': 'wrap'},
+                    {'selector': 'node', 'style': {'label': 'data(label)','fontSize': '30px',}, 'text-wrap': 'wrap'},
                     {'selector': '.red',
-                     'style': {'background-color': 'red', 'color': 'red', 'fontWeight': 'bold' }},
-                    {'selector': '.green', 'style': {'background-color': 'green', 'color': 'green', 'shape': 'rectangle',}}
+                     'style': {'background-color': 'red', 'color': 'red', 'fontWeight': 'bold', 'fontSize': '30px', }},
+                    {'selector': '.green',
+                     'style': {'background-color': 'green', 'color': 'green','fontSize': '30px', }}
 
                 ]
-            ), width=12),
+            ), width=50),
 
             dbc.Col(cyto.Cytoscape(
                 id='knowledge-graph-fallback',
                 layout={
                     'name': 'concentric',
+                    'directed': True
                 },
                 style={
                     "width": "100%",
                     "height": "calc(100vh - 150px - 50px)",
-                    "display": "none"
+                    "display": "none",
+                    'fontSize': '22px',
                 },
                 stylesheet=[
                     {'selector': 'edge', 'style': {'label': 'data(label)', 'curve-style': 'haystack',
                                                    'haystack-radius': 0,
                                                    'width': 5,
-                                                   'opacity': 0.5,
+                                                   'opacity': 1,
+                                                   'fontSize': '50px',
                                                    'line-color': '#a8eae5'}, 'text-wrap': 'wrap'},
-                    {'selector': 'node', 'style': {'label': 'data(label)', 'background-color': '#30c9bc'},
+                    {'selector': 'node',
+                     'style': {'label': 'data(label)', 'background-color': '#30c9bc', 'fontSize': '50px', },
                      'text-wrap': 'wrap'},
                 ]
-            ), width=12)
+            ), width=50)
 
         ]
     )
