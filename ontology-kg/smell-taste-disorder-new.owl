@@ -1,9 +1,10 @@
 <?xml version="1.0"?>
 <rdf:RDF xmlns="http://www.example.com/ontologies/smell-taste-disorder#"
      xml:base="http://www.example.com/ontologies/smell-taste-disorder"
-     xmlns:cc="http://creativecommons.org/licenses/by-nc/3.0/"
+     xmlns:cc="https://creativecommons.org/licenses/by/4.0/"
      xmlns:fn="http://www.w3.org/2005/xpath-functions#"
      xmlns:gn="http://www.geonames.org/ontology#"
+     xmlns:ns="http://creativecommons.org/ns#"
      xmlns:owl="http://www.w3.org/2002/07/owl#"
      xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
      xmlns:wgs="http://www.w3.org/2003/01/geo/wgs84_pos#"
@@ -13,6 +14,7 @@
      xmlns:path="http://www.ontotext.com/path#"
      xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
      xmlns:rdf4j="http://rdf4j.org/schema/rdf4j#"
+     xmlns:terms="http://purl.org/dc/terms/"
      xmlns:mapper="http://www.ontotext.com/mapper/"
      xmlns:schema="https://schema.org/"
      xmlns:sesame="http://www.openrdf.org/schema/sesame#"
@@ -20,6 +22,9 @@
      xmlns:by-nc-sa="https://creativecommons.org/licenses/by-nc-sa/3.0/">
     <owl:Ontology rdf:about="http://www.example.com/ontologies/smell-taste-disorder">
         <owl:versionIRI rdf:resource="http://www.example.com/ontologies/smell-taste-disorder/1.0.0"/>
+        <terms:description xml:lang="en">Attribution 4.0 International (CC BY 4.0)</terms:description>
+        <terms:license rdf:resource="https://creativecommons.org/licenses/by/4.0/"/>
+        <terms:title xml:lang="en">CC BY 4.0</terms:title>
         <dcterms:title xml:lang="en">Smell and Taste Disorder (STD) Ontology</dcterms:title>
     </owl:Ontology>
     
@@ -36,9 +41,9 @@
     
 
 
-    <!-- http://creativecommons.org/licenses/by-nc/3.0/licence -->
+    <!-- http://creativecommons.org/ns#license -->
 
-    <owl:AnnotationProperty rdf:about="http://creativecommons.org/licenses/by-nc/3.0/licence"/>
+    <owl:AnnotationProperty rdf:about="http://creativecommons.org/ns#license"/>
     
 
 
@@ -132,15 +137,15 @@
     
 
 
-    <!-- http://example.com/base/hasDurationOfComplaint -->
-
-    <owl:AnnotationProperty rdf:about="http://example.com/base/hasDurationOfComplaint"/>
-    
-
-
     <!-- http://example.com/base/hasCytostatic -->
 
     <owl:AnnotationProperty rdf:about="http://example.com/base/hasCytostatic"/>
+    
+
+
+    <!-- http://example.com/base/hasDurationOfComplaint -->
+
+    <owl:AnnotationProperty rdf:about="http://example.com/base/hasDurationOfComplaint"/>
     
 
 
@@ -336,9 +341,39 @@
     
 
 
+    <!-- http://purl.org/dc/terms/creator -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/creator"/>
+    
+
+
+    <!-- http://purl.org/dc/terms/description -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/description"/>
+    
+
+
+    <!-- http://purl.org/dc/terms/license -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/license"/>
+    
+
+
+    <!-- http://purl.org/dc/terms/title -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/title"/>
+    
+
+
     <!-- https://creativecommons.org/licenses/by-nc-sa/3.0/deed.en -->
 
     <owl:AnnotationProperty rdf:about="https://creativecommons.org/licenses/by-nc-sa/3.0/deed.en"/>
+    
+
+
+    <!-- https://creativecommons.org/licenses/by/4.0/licence -->
+
+    <owl:AnnotationProperty rdf:about="https://creativecommons.org/licenses/by/4.0/licence"/>
     
 
 
@@ -389,6 +424,7 @@
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#SymmetricProperty"/>
         <rdfs:domain rdf:resource="http://www.example.com/ontologies/smell-taste-disorder#ChemosensoryPhenotyping"/>
         <rdfs:range rdf:resource="http://www.example.com/ontologies/smell-taste-disorder#ChemosensoryPhenotyping"/>
+        <rdfs:comment xml:lang="en">Used to store information regarding chemosensory phenotyping</rdfs:comment>
         <rdfs:label xml:lang="en">chemosensoryPhenotyping</rdfs:label>
     </owl:ObjectProperty>
     
@@ -501,6 +537,7 @@
     <owl:DatatypeProperty rdf:about="http://www.example.com/ontologies/smell-taste-disorder#endoNasalScopy">
         <rdfs:domain rdf:resource="http://www.example.com/ontologies/smell-taste-disorder#EndoScopy"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment xml:lang="en">Used to store information of endo nasal scopy of a patient.</rdfs:comment>
         <rdfs:label xml:lang="en">endoNasalScopy</rdfs:label>
     </owl:DatatypeProperty>
     
@@ -533,6 +570,7 @@
     <owl:DatatypeProperty rdf:about="http://www.example.com/ontologies/smell-taste-disorder#hasAllergy">
         <rdfs:domain rdf:resource="http://example.com/base/Patient"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment xml:lang="en">Used to store information of allergy for a patient.</rdfs:comment>
         <rdfs:label xml:lang="en">hasAllergy</rdfs:label>
     </owl:DatatypeProperty>
     
@@ -543,6 +581,7 @@
     <owl:DatatypeProperty rdf:about="http://www.example.com/ontologies/smell-taste-disorder#hasAnamnesticSmellTasteDisorder">
         <rdfs:domain rdf:resource="http://www.example.com/ontologies/smell-taste-disorder#MedicalCondition"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment xml:lang="en">Associates anamnestic smell taste disorder to a patient.</rdfs:comment>
         <rdfs:label xml:lang="en">hasAnamnesticSmellTasteDisorder</rdfs:label>
     </owl:DatatypeProperty>
     
@@ -616,6 +655,17 @@
     
 
 
+    <!-- http://www.example.com/ontologies/smell-taste-disorder#hasCytostatic -->
+
+    <owl:DatatypeProperty rdf:about="http://www.example.com/ontologies/smell-taste-disorder#hasCytostatic">
+        <rdfs:domain rdf:resource="http://www.example.com/ontologies/smell-taste-disorder#MedicationType"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment xml:lang="en">A medication type used to slow or stop the growth of cells, including cancer cells, without killing them (https://www.cancer.gov/publications/dictionaries/cancer-terms/def/cytostatic-agent).</rdfs:comment>
+        <rdfs:label xml:lang="en">hasCytostatic</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
     <!-- http://www.example.com/ontologies/smell-taste-disorder#hasDurationOfComplaint -->
 
     <owl:DatatypeProperty rdf:about="http://www.example.com/ontologies/smell-taste-disorder#hasDurationOfComplaint">
@@ -624,17 +674,6 @@
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
         <rdfs:comment xml:lang="en">Used to store time limits information for a patient.</rdfs:comment>
         <rdfs:label xml:lang="en">hasDurationOfComplaint</rdfs:label>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- http://www.example.com/ontologies/smell-taste-disorder#hasCytostatic -->
-
-    <owl:DatatypeProperty rdf:about="http://www.example.com/ontologies/smell-taste-disorder#hasCytostatic">
-        <rdfs:domain rdf:resource="http://www.example.com/ontologies/smell-taste-disorder#MedicationType"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-        <rdfs:comment xml:lang="en">A medication type used to slow or stop the growth of cells, including cancer cells, without killing them (https://www.cancer.gov/publications/dictionaries/cancer-terms/def/cytostatic-agent).</rdfs:comment>
-        <rdfs:label xml:lang="en">hasCytostatic</rdfs:label>
     </owl:DatatypeProperty>
     
 
@@ -668,6 +707,7 @@
     <owl:DatatypeProperty rdf:about="http://www.example.com/ontologies/smell-taste-disorder#hasHistoryOfEntSurgery">
         <rdfs:domain rdf:resource="http://example.com/base/Patient"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment xml:lang="en">Used to store history of ent surgery for a patient.</rdfs:comment>
         <rdfs:label xml:lang="en">hasHistoryOfEntSurgery</rdfs:label>
     </owl:DatatypeProperty>
     
@@ -701,6 +741,7 @@
     <owl:DatatypeProperty rdf:about="http://www.example.com/ontologies/smell-taste-disorder#hasMRIBrainContusion">
         <rdfs:domain rdf:resource="http://www.example.com/ontologies/smell-taste-disorder#MRIDiagnostic"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment xml:lang="en">Used to store mri brain contusion for a patient.</rdfs:comment>
         <rdfs:label xml:lang="en">hasMRIBrainContusion</rdfs:label>
     </owl:DatatypeProperty>
     
@@ -711,6 +752,7 @@
     <owl:DatatypeProperty rdf:about="http://www.example.com/ontologies/smell-taste-disorder#hasMRILeftRightDifference">
         <rdfs:domain rdf:resource="http://www.example.com/ontologies/smell-taste-disorder#MRIDiagnostic"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment xml:lang="en">Used to store mri left right difference value and associate to a patient.</rdfs:comment>
         <rdfs:label xml:lang="en">hasMRILeftRightDifference</rdfs:label>
     </owl:DatatypeProperty>
     
@@ -721,6 +763,7 @@
     <owl:DatatypeProperty rdf:about="http://www.example.com/ontologies/smell-taste-disorder#hasMRIMusosalsWelling">
         <rdfs:domain rdf:resource="http://www.example.com/ontologies/smell-taste-disorder#MRIDiagnostic"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment xml:lang="en">Associates mri musosals welling to a patient.</rdfs:comment>
         <rdfs:label xml:lang="en">hasMRIMusosalsWelling</rdfs:label>
     </owl:DatatypeProperty>
     
@@ -731,6 +774,7 @@
     <owl:DatatypeProperty rdf:about="http://www.example.com/ontologies/smell-taste-disorder#hasMRINotConstructed">
         <rdfs:domain rdf:resource="http://www.example.com/ontologies/smell-taste-disorder#MRIDiagnostic"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment xml:lang="en">Associates mri not constructed value to a patient.</rdfs:comment>
         <rdfs:label xml:lang="en">hasMRINotConstructed</rdfs:label>
     </owl:DatatypeProperty>
     
@@ -741,6 +785,7 @@
     <owl:DatatypeProperty rdf:about="http://www.example.com/ontologies/smell-taste-disorder#hasMRINotToMeasure">
         <rdfs:domain rdf:resource="http://www.example.com/ontologies/smell-taste-disorder#MRIDiagnostic"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment xml:lang="en">Used to store the information of mri not measure and associates to a patient.</rdfs:comment>
         <rdfs:label xml:lang="en">hasMRINotToMeasure</rdfs:label>
     </owl:DatatypeProperty>
     
@@ -784,6 +829,7 @@
     <owl:DatatypeProperty rdf:about="http://www.example.com/ontologies/smell-taste-disorder#hasParosmia">
         <rdfs:domain rdf:resource="http://www.example.com/ontologies/smell-taste-disorder#MedicalCondition"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment xml:lang="en">Associates a parosmia to a patient.</rdfs:comment>
         <rdfs:label xml:lang="en">hasParosmia</rdfs:label>
     </owl:DatatypeProperty>
     
@@ -794,6 +840,7 @@
     <owl:DatatypeProperty rdf:about="http://www.example.com/ontologies/smell-taste-disorder#hasRetronasalTest">
         <rdfs:domain rdf:resource="http://www.example.com/ontologies/smell-taste-disorder#DiagnosticTest"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+        <rdfs:comment xml:lang="en">Used to associate retronasal test to a patient.</rdfs:comment>
         <rdfs:label xml:lang="en">hasRetronasalTest</rdfs:label>
     </owl:DatatypeProperty>
     
@@ -851,6 +898,7 @@
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
         <rdfs:domain rdf:resource="http://example.com/base/Patient"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment xml:lang="en">Used to store the information of smell disorder and associate to a patient.</rdfs:comment>
         <rdfs:label xml:lang="en">hasTasteDisorder</rdfs:label>
     </owl:DatatypeProperty>
     
@@ -861,6 +909,7 @@
     <owl:DatatypeProperty rdf:about="http://www.example.com/ontologies/smell-taste-disorder#hasThyroidTestosteroneGH">
         <rdfs:domain rdf:resource="http://www.example.com/ontologies/smell-taste-disorder#MedicationType"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment xml:lang="en">Associates thyroid test osteroneGH value to patient.</rdfs:comment>
         <rdfs:label xml:lang="en">hasThyroidTestosteroneGH</rdfs:label>
     </owl:DatatypeProperty>
     
@@ -883,6 +932,7 @@
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
         <rdfs:domain rdf:resource="http://www.example.com/ontologies/smell-taste-disorder#DemographicCharacteristic"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+        <rdfs:comment xml:lang="en">Used to store wight of a patient.</rdfs:comment>
         <rdfs:label xml:lang="en">hasWeight</rdfs:label>
     </owl:DatatypeProperty>
     
@@ -893,6 +943,7 @@
     <owl:DatatypeProperty rdf:about="http://www.example.com/ontologies/smell-taste-disorder#onsetOfComplaint">
         <rdfs:domain rdf:resource="http://www.example.com/ontologies/smell-taste-disorder#OnsetComplaint"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment xml:lang="en">Used to store the value of onset of complaint for a patient.</rdfs:comment>
         <rdfs:label xml:lang="en">onsetOfComplaint</rdfs:label>
     </owl:DatatypeProperty>
     
@@ -903,6 +954,7 @@
     <owl:DatatypeProperty rdf:about="http://www.example.com/ontologies/smell-taste-disorder#presenceOfComplaint">
         <rdfs:domain rdf:resource="http://www.example.com/ontologies/smell-taste-disorder#PresenceComplaint"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment xml:lang="en">Used to store the value of presence of complaint for a patient.</rdfs:comment>
         <rdfs:label xml:lang="en">presenceOfComplaint</rdfs:label>
     </owl:DatatypeProperty>
     
@@ -913,6 +965,7 @@
     <owl:DatatypeProperty rdf:about="http://www.example.com/ontologies/smell-taste-disorder#rhinoscopyAnterior">
         <rdfs:domain rdf:resource="http://www.example.com/ontologies/smell-taste-disorder#EndoScopy"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment xml:lang="en">Used to store the value of rhinoscopy anterior for a patient.</rdfs:comment>
         <rdfs:label xml:lang="en">rhinoscopyAnterior</rdfs:label>
     </owl:DatatypeProperty>
     
@@ -923,6 +976,7 @@
     <owl:DatatypeProperty rdf:about="http://www.example.com/ontologies/smell-taste-disorder#sniffinStickDiscrimination">
         <rdfs:domain rdf:resource="http://www.example.com/ontologies/smell-taste-disorder#SniffinDiagnostic"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+        <rdfs:comment xml:lang="en">Associtates sniffin stick discrimination to a patient.</rdfs:comment>
         <rdfs:label xml:lang="en">sniffinStickDiscrimination</rdfs:label>
     </owl:DatatypeProperty>
     
@@ -933,6 +987,7 @@
     <owl:DatatypeProperty rdf:about="http://www.example.com/ontologies/smell-taste-disorder#sniffinStickIdentification">
         <rdfs:domain rdf:resource="http://www.example.com/ontologies/smell-taste-disorder#SniffinDiagnostic"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+        <rdfs:comment xml:lang="en">Associates sniffin stick identification to a patient.</rdfs:comment>
         <rdfs:label xml:lang="en">sniffinStickIdentification</rdfs:label>
     </owl:DatatypeProperty>
     
@@ -943,6 +998,7 @@
     <owl:DatatypeProperty rdf:about="http://www.example.com/ontologies/smell-taste-disorder#sniffinStickTDI">
         <rdfs:domain rdf:resource="http://www.example.com/ontologies/smell-taste-disorder#SniffinDiagnostic"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+        <rdfs:comment xml:lang="en">Used to store information of sniffin stick TDI and associate it with a patient.</rdfs:comment>
         <rdfs:label xml:lang="en">sniffinStickTDI</rdfs:label>
     </owl:DatatypeProperty>
     
@@ -953,6 +1009,7 @@
     <owl:DatatypeProperty rdf:about="http://www.example.com/ontologies/smell-taste-disorder#sniffinStickThreshold">
         <rdfs:domain rdf:resource="http://www.example.com/ontologies/smell-taste-disorder#SniffinDiagnostic"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+        <rdfs:comment xml:lang="en">Associates sniffin stick threshold information to a patient.</rdfs:comment>
         <rdfs:label xml:lang="en">sniffinStickThreshold</rdfs:label>
     </owl:DatatypeProperty>
     
@@ -963,6 +1020,7 @@
     <owl:DatatypeProperty rdf:about="http://www.example.com/ontologies/smell-taste-disorder#symptomsAtDiagnosic">
         <rdfs:domain rdf:resource="http://www.example.com/ontologies/smell-taste-disorder#Symptom"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment xml:lang="en">Used to store information of symptoms at diagnosis associated with a patient.</rdfs:comment>
         <rdfs:label xml:lang="en">symptomsAtDiagnosis</rdfs:label>
     </owl:DatatypeProperty>
     
@@ -973,6 +1031,7 @@
     <owl:DatatypeProperty rdf:about="http://www.example.com/ontologies/smell-taste-disorder#tasteStrip">
         <rdfs:domain rdf:resource="http://www.example.com/ontologies/smell-taste-disorder#TasteStripTest"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+        <rdfs:comment xml:lang="en">Used to associate taste strip information with a patient.</rdfs:comment>
         <rdfs:label xml:lang="en">tasteStrip</rdfs:label>
     </owl:DatatypeProperty>
     
@@ -1003,6 +1062,7 @@
 
     <owl:Class rdf:about="http://www.example.com/ontologies/smell-taste-disorder#ActiveSubstance">
         <rdfs:subClassOf rdf:resource="http://www.example.com/ontologies/smell-taste-disorder#Pharmacologic"/>
+        <rdfs:comment xml:lang="en">Active Substance</rdfs:comment>
         <rdfs:label xml:lang="en">ActiveSubstance</rdfs:label>
     </owl:Class>
     
@@ -1012,6 +1072,7 @@
 
     <owl:Class rdf:about="http://www.example.com/ontologies/smell-taste-disorder#Age">
         <rdfs:subClassOf rdf:resource="http://www.example.com/ontologies/smell-taste-disorder#DemographicCharacteristic"/>
+        <rdfs:comment xml:lang="en">Describes the age of a patient.</rdfs:comment>
         <rdfs:label xml:lang="en">Age</rdfs:label>
     </owl:Class>
     
@@ -1021,6 +1082,7 @@
 
     <owl:Class rdf:about="http://www.example.com/ontologies/smell-taste-disorder#AlcoholConsumption">
         <rdfs:subClassOf rdf:resource="http://www.example.com/ontologies/smell-taste-disorder#SocialHistory"/>
+        <rdfs:comment xml:lang="en">Alcohol Consumption</rdfs:comment>
         <rdfs:label xml:lang="en">AlcoholConsumption</rdfs:label>
     </owl:Class>
     
@@ -1030,6 +1092,7 @@
 
     <owl:Class rdf:about="http://www.example.com/ontologies/smell-taste-disorder#Allergens">
         <rdfs:subClassOf rdf:resource="http://www.example.com/ontologies/smell-taste-disorder#AllergyEvaluation"/>
+        <rdfs:comment xml:lang="en">Allergies arise if the body&apos;s immune system overreacts to certain foreign substances (allergens) that are normally harmless in most people (https://www.niehs.nih.gov/health/topics/agents/allergens/index.cfm#:~:text=Allergies%20arise%20if%20the%20body&apos;s,biologic%20products%2C%20and%20insect%20venoms.).</rdfs:comment>
         <rdfs:label xml:lang="en">Allergens</rdfs:label>
     </owl:Class>
     
@@ -1039,6 +1102,7 @@
 
     <owl:Class rdf:about="http://www.example.com/ontologies/smell-taste-disorder#AllergicImmunologic">
         <rdfs:subClassOf rdf:resource="http://www.example.com/ontologies/smell-taste-disorder#ReviewOfSystem"/>
+        <rdfs:comment xml:lang="en">Allergic Immunologic</rdfs:comment>
         <rdfs:label xml:lang="en">AllergicImmunologic</rdfs:label>
     </owl:Class>
     
@@ -1048,6 +1112,7 @@
 
     <owl:Class rdf:about="http://www.example.com/ontologies/smell-taste-disorder#AllergyEvaluation">
         <rdfs:subClassOf rdf:resource="http://www.example.com/ontologies/smell-taste-disorder#ChemosensoryPhenotyping"/>
+        <rdfs:comment xml:lang="en">Allergy Evaluation</rdfs:comment>
         <rdfs:label xml:lang="en">AllergyEvaluation</rdfs:label>
     </owl:Class>
     
@@ -1057,6 +1122,7 @@
 
     <owl:Class rdf:about="http://www.example.com/ontologies/smell-taste-disorder#AllievatingFactor">
         <rdfs:subClassOf rdf:resource="http://www.example.com/ontologies/smell-taste-disorder#HistoryOfIllness"/>
+        <rdfs:comment xml:lang="en">Allievating Factor</rdfs:comment>
         <rdfs:label xml:lang="en">AllievatingFactor</rdfs:label>
     </owl:Class>
     
@@ -1066,6 +1132,7 @@
 
     <owl:Class rdf:about="http://www.example.com/ontologies/smell-taste-disorder#AlternativeMedicine">
         <rdfs:subClassOf rdf:resource="http://www.example.com/ontologies/smell-taste-disorder#ReceivedInterventionForTheCurrentProblem"/>
+        <rdfs:comment xml:lang="en">Alternative Medicine</rdfs:comment>
         <rdfs:label xml:lang="en">AlternativeMedicine</rdfs:label>
     </owl:Class>
     
@@ -1075,6 +1142,7 @@
 
     <owl:Class rdf:about="http://www.example.com/ontologies/smell-taste-disorder#AnamnesticTest">
         <rdfs:subClassOf rdf:resource="http://www.example.com/ontologies/smell-taste-disorder#DiagnosticTest"/>
+        <rdfs:comment xml:lang="en">Anamnestic Test</rdfs:comment>
         <rdfs:label xml:lang="en">AnamnesticTest</rdfs:label>
     </owl:Class>
     
@@ -1084,6 +1152,7 @@
 
     <owl:Class rdf:about="http://www.example.com/ontologies/smell-taste-disorder#AntImigraineDrug">
         <rdfs:subClassOf rdf:resource="http://www.example.com/ontologies/smell-taste-disorder#MedicationType"/>
+        <rdfs:comment xml:lang="en">Ant Imigraine Drug</rdfs:comment>
         <rdfs:label xml:lang="en">AntImigraineDrug</rdfs:label>
     </owl:Class>
     
@@ -1093,6 +1162,7 @@
 
     <owl:Class rdf:about="http://www.example.com/ontologies/smell-taste-disorder#AntiEpilepticDrug">
         <rdfs:subClassOf rdf:resource="http://www.example.com/ontologies/smell-taste-disorder#MedicationType"/>
+        <rdfs:comment xml:lang="en">Anti Epileptic Drug</rdfs:comment>
         <rdfs:label xml:lang="en">AntiEpilepticDrug</rdfs:label>
     </owl:Class>
     
@@ -1102,6 +1172,7 @@
 
     <owl:Class rdf:about="http://www.example.com/ontologies/smell-taste-disorder#AntiInfectiousDrug">
         <rdfs:subClassOf rdf:resource="http://www.example.com/ontologies/smell-taste-disorder#MedicationType"/>
+        <rdfs:comment xml:lang="en">Anti Infectious Drug</rdfs:comment>
         <rdfs:label xml:lang="en">AntiInfectiousDrug</rdfs:label>
     </owl:Class>
     
@@ -1111,6 +1182,7 @@
 
     <owl:Class rdf:about="http://www.example.com/ontologies/smell-taste-disorder#AntiInflammatoryDrug">
         <rdfs:subClassOf rdf:resource="http://www.example.com/ontologies/smell-taste-disorder#MedicationType"/>
+        <rdfs:comment xml:lang="en">Anti Inflammatory Drug</rdfs:comment>
         <rdfs:label xml:lang="en">AntiInflammatoryDrug</rdfs:label>
     </owl:Class>
     
@@ -1120,6 +1192,7 @@
 
     <owl:Class rdf:about="http://www.example.com/ontologies/smell-taste-disorder#Antiparkinsonian">
         <rdfs:subClassOf rdf:resource="http://www.example.com/ontologies/smell-taste-disorder#MedicationType"/>
+        <rdfs:comment xml:lang="en">Anti parkinsonian</rdfs:comment>
         <rdfs:label xml:lang="en">Antiparkinsonian</rdfs:label>
     </owl:Class>
     
@@ -1129,6 +1202,7 @@
 
     <owl:Class rdf:about="http://www.example.com/ontologies/smell-taste-disorder#Apparition">
         <rdfs:subClassOf rdf:resource="http://www.example.com/ontologies/smell-taste-disorder#Onset"/>
+        <rdfs:comment xml:lang="en">A supernatural appearance of a person or thing, especially a ghost; a specter or phantom (https://www.dictionary.com/browse/apparition)</rdfs:comment>
         <rdfs:label xml:lang="en">Apparition</rdfs:label>
     </owl:Class>
     
@@ -1138,6 +1212,7 @@
 
     <owl:Class rdf:about="http://www.example.com/ontologies/smell-taste-disorder#AssociatedENTSymptomsSign">
         <rdfs:subClassOf rdf:resource="http://www.example.com/ontologies/smell-taste-disorder#HistoryOfIllness"/>
+        <rdfs:comment xml:lang="en">Associated ENT Symptoms Sign</rdfs:comment>
         <rdfs:label xml:lang="en">AssociatedENTSymptomsSign</rdfs:label>
     </owl:Class>
     
@@ -1147,6 +1222,7 @@
 
     <owl:Class rdf:about="http://www.example.com/ontologies/smell-taste-disorder#Behavioral">
         <rdfs:subClassOf rdf:resource="http://www.example.com/ontologies/smell-taste-disorder#ReceivedInterventionForTheCurrentProblem"/>
+        <rdfs:comment xml:lang="en">Relating to a person’s manner of behaving or acting (https://www.dictionary.com/browse/behavioral).</rdfs:comment>
         <rdfs:label xml:lang="en">Behavioral</rdfs:label>
     </owl:Class>
     
@@ -1156,6 +1232,7 @@
 
     <owl:Class rdf:about="http://www.example.com/ontologies/smell-taste-disorder#Cardiovascular">
         <rdfs:subClassOf rdf:resource="http://www.example.com/ontologies/smell-taste-disorder#ReviewOfSystem"/>
+        <rdfs:comment xml:lang="en">Cardiovascular infromation regarding cardiovascular disease (https://www.nhs.uk/conditions/cardiovascular-disease/).</rdfs:comment>
         <rdfs:label xml:lang="en">Cardiovascular</rdfs:label>
     </owl:Class>
     
@@ -1165,6 +1242,7 @@
 
     <owl:Class rdf:about="http://www.example.com/ontologies/smell-taste-disorder#CardiovascularDrug">
         <rdfs:subClassOf rdf:resource="http://www.example.com/ontologies/smell-taste-disorder#MedicationType"/>
+        <rdfs:comment xml:lang="en">Cardiovascular Drug</rdfs:comment>
         <rdfs:label xml:lang="en">CardiovascularDrug</rdfs:label>
     </owl:Class>
     
@@ -1174,6 +1252,7 @@
 
     <owl:Class rdf:about="http://www.example.com/ontologies/smell-taste-disorder#CharacteristicEvent">
         <rdfs:subClassOf rdf:resource="http://www.example.com/ontologies/smell-taste-disorder#HistoryOfIllness"/>
+        <rdfs:comment xml:lang="en">Characteristic Event</rdfs:comment>
         <rdfs:label xml:lang="en">CharacteristicEvent</rdfs:label>
     </owl:Class>
     
@@ -1182,6 +1261,7 @@
     <!-- http://www.example.com/ontologies/smell-taste-disorder#ChemosensoryPhenotyping -->
 
     <owl:Class rdf:about="http://www.example.com/ontologies/smell-taste-disorder#ChemosensoryPhenotyping">
+        <rdfs:comment xml:lang="en">Chemosensory Phenotyping</rdfs:comment>
         <rdfs:label xml:lang="en">ChemosensoryPhenotyping</rdfs:label>
     </owl:Class>
     
@@ -1191,6 +1271,7 @@
 
     <owl:Class rdf:about="http://www.example.com/ontologies/smell-taste-disorder#ChemosensorySymptomsSign">
         <rdfs:subClassOf rdf:resource="http://www.example.com/ontologies/smell-taste-disorder#ChemosensoryPhenotyping"/>
+        <rdfs:comment xml:lang="en">Chemosensory SymptomsSign</rdfs:comment>
         <rdfs:label xml:lang="en">ChemosensorySymptomsSign</rdfs:label>
     </owl:Class>
     
@@ -1219,6 +1300,7 @@
 
     <owl:Class rdf:about="http://www.example.com/ontologies/smell-taste-disorder#CompliantDuration">
         <rdfs:subClassOf rdf:resource="http://www.example.com/ontologies/smell-taste-disorder#ComplaintDuration"/>
+        <rdfs:comment xml:lang="en">Describes duration of complaint.</rdfs:comment>
         <rdfs:label xml:lang="en">DurationOfComplaint</rdfs:label>
     </owl:Class>
     
@@ -1228,6 +1310,7 @@
 
     <owl:Class rdf:about="http://www.example.com/ontologies/smell-taste-disorder#Condition">
         <rdfs:subClassOf rdf:resource="http://www.example.com/ontologies/smell-taste-disorder#FamilyHistory"/>
+        <rdfs:comment xml:lang="en">The state that something is in, especially how good or bad its physical state is (https://www.ldoceonline.com/dictionary/condition).</rdfs:comment>
         <rdfs:label xml:lang="en">Condition</rdfs:label>
     </owl:Class>
     
@@ -1237,6 +1320,7 @@
 
     <owl:Class rdf:about="http://www.example.com/ontologies/smell-taste-disorder#CranialNerves">
         <rdfs:subClassOf rdf:resource="http://www.example.com/ontologies/smell-taste-disorder#PhysicalExaminationFinding"/>
+        <rdfs:comment xml:lang="en">Cranial Nerves</rdfs:comment>
         <rdfs:label xml:lang="en">CranialNerves</rdfs:label>
     </owl:Class>
     
@@ -1246,6 +1330,7 @@
 
     <owl:Class rdf:about="http://www.example.com/ontologies/smell-taste-disorder#DeliveryMethod">
         <rdfs:subClassOf rdf:resource="http://www.example.com/ontologies/smell-taste-disorder#Pharmacologic"/>
+        <rdfs:comment xml:lang="en">Delivery Method</rdfs:comment>
         <rdfs:label xml:lang="en">DeliveryMethod</rdfs:label>
     </owl:Class>
     
@@ -1255,6 +1340,7 @@
 
     <owl:Class rdf:about="http://www.example.com/ontologies/smell-taste-disorder#DemographicCharacteristic">
         <rdfs:subClassOf rdf:resource="http://www.example.com/ontologies/smell-taste-disorder#ChemosensoryPhenotyping"/>
+        <rdfs:comment xml:lang="en">Demographic Characteristic</rdfs:comment>
         <rdfs:label xml:lang="en">DemographicCharacteristic</rdfs:label>
     </owl:Class>
     
@@ -1263,6 +1349,7 @@
     <!-- http://www.example.com/ontologies/smell-taste-disorder#DiagnosticTest -->
 
     <owl:Class rdf:about="http://www.example.com/ontologies/smell-taste-disorder#DiagnosticTest">
+        <rdfs:comment xml:lang="en">Diagnostic Test</rdfs:comment>
         <rdfs:label xml:lang="en">DiagnosticTest</rdfs:label>
     </owl:Class>
     
@@ -1281,6 +1368,7 @@
 
     <owl:Class rdf:about="http://www.example.com/ontologies/smell-taste-disorder#Drugs">
         <rdfs:subClassOf rdf:resource="http://www.example.com/ontologies/smell-taste-disorder#Allergens"/>
+        <rdfs:comment xml:lang="en">Any substance (other than food) that is used to prevent, diagnose, treat, or relieve symptoms of a disease or abnormal condition. Drugs can also affect how the brain and the rest of the body work and cause changes in mood, awareness, thoughts, feelings, or behavior. Some types of drugs, such as opioids, may be abused or lead to addiction (https://www.cancer.gov/publications/dictionaries/cancer-terms/def/drug).</rdfs:comment>
         <rdfs:label xml:lang="en">Drugs</rdfs:label>
     </owl:Class>
     
@@ -1290,6 +1378,7 @@
 
     <owl:Class rdf:about="http://www.example.com/ontologies/smell-taste-disorder#Dust">
         <rdfs:subClassOf rdf:resource="http://www.example.com/ontologies/smell-taste-disorder#ToxicExposure"/>
+        <rdfs:comment xml:lang="en">Describes infromation regarding dust.</rdfs:comment>
         <rdfs:label xml:lang="en">Dust</rdfs:label>
     </owl:Class>
     
@@ -1300,6 +1389,7 @@
     <owl:Class rdf:about="http://www.example.com/ontologies/smell-taste-disorder#ENTTherapy">
         <rdfs:subClassOf rdf:resource="http://www.example.com/ontologies/smell-taste-disorder#Therapy"/>
         <owl:disjointWith rdf:resource="http://www.example.com/ontologies/smell-taste-disorder#SmellTherapy"/>
+        <rdfs:comment xml:lang="en">ENT Therapy</rdfs:comment>
         <rdfs:label xml:lang="en">ENTTherapy</rdfs:label>
     </owl:Class>
     
@@ -1309,6 +1399,7 @@
 
     <owl:Class rdf:about="http://www.example.com/ontologies/smell-taste-disorder#EffectOnQualityOfLife">
         <rdfs:subClassOf rdf:resource="http://www.example.com/ontologies/smell-taste-disorder#HistoryOfIllness"/>
+        <rdfs:comment xml:lang="en">Effect On Quality Of Life</rdfs:comment>
         <rdfs:label xml:lang="en">EffectOnQualityOfLife</rdfs:label>
     </owl:Class>
     
@@ -1318,6 +1409,7 @@
 
     <owl:Class rdf:about="http://www.example.com/ontologies/smell-taste-disorder#EndoScopy">
         <rdfs:subClassOf rdf:resource="http://www.example.com/ontologies/smell-taste-disorder#DiagnosticTest"/>
+        <rdfs:comment xml:lang="en">Endo Scopy</rdfs:comment>
         <rdfs:label xml:lang="en">EndoScopy</rdfs:label>
     </owl:Class>
     
@@ -1327,6 +1419,7 @@
 
     <owl:Class rdf:about="http://www.example.com/ontologies/smell-taste-disorder#Endocrine">
         <rdfs:subClassOf rdf:resource="http://www.example.com/ontologies/smell-taste-disorder#ReviewOfSystem"/>
+        <rdfs:comment xml:lang="en">Refers to tissue that makes and releases hormones that travel in the bloodstream and control the actions of other cells or organs. Some examples of endocrine tissues are the pituitary, thyroid, and adrenal glands (https://www.cancer.gov/publications/dictionaries/cancer-terms/def/endocrine).</rdfs:comment>
         <rdfs:label xml:lang="en">Endocrine</rdfs:label>
     </owl:Class>
     
@@ -1336,6 +1429,7 @@
 
     <owl:Class rdf:about="http://www.example.com/ontologies/smell-taste-disorder#Ethnicity">
         <rdfs:subClassOf rdf:resource="http://www.example.com/ontologies/smell-taste-disorder#DemographicCharacteristic"/>
+        <rdfs:comment xml:lang="en">A term that refers to the social and cultural characteristics, backgrounds, or experiences shared by a group of people. These include language, religion, beliefs, values, and behaviors that are often handed down from one generation to the next. Some conditions or diseases, such as cancer, may be more common in certain ethnic groups than in others (https://www.cancer.gov/publications/dictionaries/cancer-terms/def/ethnicity).</rdfs:comment>
         <rdfs:label xml:lang="en">Ethnicity</rdfs:label>
     </owl:Class>
     
@@ -1355,6 +1449,7 @@
 
     <owl:Class rdf:about="http://www.example.com/ontologies/smell-taste-disorder#Evolution">
         <rdfs:subClassOf rdf:resource="http://www.example.com/ontologies/smell-taste-disorder#HistoryOfIllness"/>
+        <rdfs:comment xml:lang="en">The way in which living things change and develop over millions of years (https://dictionary.cambridge.org/dictionary/english/evolution).</rdfs:comment>
         <rdfs:label xml:lang="en">Evolution</rdfs:label>
     </owl:Class>
     
@@ -1364,6 +1459,7 @@
 
     <owl:Class rdf:about="http://www.example.com/ontologies/smell-taste-disorder#ExacerbatingFactors">
         <rdfs:subClassOf rdf:resource="http://www.example.com/ontologies/smell-taste-disorder#HistoryOfIllness"/>
+        <rdfs:comment xml:lang="en">Exacerbating Factors</rdfs:comment>
         <rdfs:label xml:lang="en">ExacerbatingFactors</rdfs:label>
     </owl:Class>
     
@@ -1373,6 +1469,7 @@
 
     <owl:Class rdf:about="http://www.example.com/ontologies/smell-taste-disorder#Eyes">
         <rdfs:subClassOf rdf:resource="http://www.example.com/ontologies/smell-taste-disorder#ReviewOfSystem"/>
+        <rdfs:comment xml:lang="en">Describes informatin of eyes for a patient.</rdfs:comment>
         <rdfs:label xml:lang="en">Eyes</rdfs:label>
     </owl:Class>
     
@@ -1382,6 +1479,7 @@
 
     <owl:Class rdf:about="http://www.example.com/ontologies/smell-taste-disorder#FamilyHistory">
         <rdfs:subClassOf rdf:resource="http://www.example.com/ontologies/smell-taste-disorder#ChemosensoryPhenotyping"/>
+        <rdfs:comment xml:lang="en">Family History</rdfs:comment>
         <rdfs:label xml:lang="en">FamilyHistory</rdfs:label>
     </owl:Class>
     
@@ -1391,6 +1489,7 @@
 
     <owl:Class rdf:about="http://www.example.com/ontologies/smell-taste-disorder#Food">
         <rdfs:subClassOf rdf:resource="http://www.example.com/ontologies/smell-taste-disorder#Allergens"/>
+        <rdfs:comment xml:lang="en">Food is any substance consumed by an organism for nutritional support. Food is usually of plant, animal, or fungal origin and contains essential nutrients such as carbohydrates, fats, proteins, vitamins, or minerals (https://en.wikipedia.org/wiki/Food).</rdfs:comment>
         <rdfs:label xml:lang="en">Food</rdfs:label>
     </owl:Class>
     
@@ -1400,6 +1499,7 @@
 
     <owl:Class rdf:about="http://www.example.com/ontologies/smell-taste-disorder#Frequency">
         <rdfs:subClassOf rdf:resource="http://www.example.com/ontologies/smell-taste-disorder#HistoryOfIllness"/>
+        <rdfs:comment xml:lang="en">The number of times something happens within a particular period, or the fact of something happening often or a large number or times (https://dictionary.cambridge.org/dictionary/english/frequency).</rdfs:comment>
         <rdfs:label xml:lang="en">Frequency</rdfs:label>
     </owl:Class>
     
@@ -1409,6 +1509,7 @@
 
     <owl:Class rdf:about="http://www.example.com/ontologies/smell-taste-disorder#Gastrointestinal">
         <rdfs:subClassOf rdf:resource="http://www.example.com/ontologies/smell-taste-disorder#ReviewOfSystem"/>
+        <rdfs:comment xml:lang="en">Gastrointestinal information regarding a patient.</rdfs:comment>
         <rdfs:label xml:lang="en">Gastrointestinal</rdfs:label>
     </owl:Class>
     
@@ -1418,6 +1519,7 @@
 
     <owl:Class rdf:about="http://www.example.com/ontologies/smell-taste-disorder#Gender">
         <rdfs:subClassOf rdf:resource="http://www.example.com/ontologies/smell-taste-disorder#DemographicCharacteristic"/>
+        <rdfs:comment xml:lang="en">Describe gender of a patient.</rdfs:comment>
         <rdfs:label xml:lang="en">Gender</rdfs:label>
     </owl:Class>
     
@@ -1427,6 +1529,7 @@
 
     <owl:Class rdf:about="http://www.example.com/ontologies/smell-taste-disorder#General">
         <rdfs:subClassOf rdf:resource="http://www.example.com/ontologies/smell-taste-disorder#ReviewOfSystem"/>
+        <rdfs:comment xml:lang="en">Involving or relating to most or all people, things, or places, especially when these are considered as a unit (https://dictionary.cambridge.org/dictionary/english/general).</rdfs:comment>
         <rdfs:label xml:lang="en">General</rdfs:label>
     </owl:Class>
     
@@ -1436,6 +1539,7 @@
 
     <owl:Class rdf:about="http://www.example.com/ontologies/smell-taste-disorder#HematologicLymphatic">
         <rdfs:subClassOf rdf:resource="http://www.example.com/ontologies/smell-taste-disorder#ReviewOfSystem"/>
+        <rdfs:comment xml:lang="en">Hematologic Lymphatic</rdfs:comment>
         <rdfs:label xml:lang="en">HematologicLymphatic</rdfs:label>
     </owl:Class>
     
@@ -1445,6 +1549,7 @@
 
     <owl:Class rdf:about="http://www.example.com/ontologies/smell-taste-disorder#HistoryOfIllness">
         <rdfs:subClassOf rdf:resource="http://www.example.com/ontologies/smell-taste-disorder#ChemosensoryPhenotyping"/>
+        <rdfs:comment xml:lang="en">History Of Illness</rdfs:comment>
         <rdfs:label xml:lang="en">HistoryOfIllness</rdfs:label>
     </owl:Class>
     
@@ -1454,6 +1559,7 @@
 
     <owl:Class rdf:about="http://www.example.com/ontologies/smell-taste-disorder#HypopharynxLarynx">
         <rdfs:subClassOf rdf:resource="http://www.example.com/ontologies/smell-taste-disorder#PhysicalExaminationFinding"/>
+        <rdfs:comment xml:lang="en">Hypopharynx Larynx</rdfs:comment>
         <rdfs:label xml:lang="en">HypopharynxLarynx</rdfs:label>
     </owl:Class>
     
@@ -1463,6 +1569,7 @@
 
     <owl:Class rdf:about="http://www.example.com/ontologies/smell-taste-disorder#Insect">
         <rdfs:subClassOf rdf:resource="http://www.example.com/ontologies/smell-taste-disorder#Allergens"/>
+        <rdfs:comment xml:lang="en">Insect, (class Insecta or Hexapoda), any member of the largest class of the phylum Arthropoda, which is itself the largest of the animal phyla (https://www.britannica.com/animal/insect).</rdfs:comment>
         <rdfs:label xml:lang="en">Insect</rdfs:label>
     </owl:Class>
     
@@ -1472,6 +1579,7 @@
 
     <owl:Class rdf:about="http://www.example.com/ontologies/smell-taste-disorder#Integumentary">
         <rdfs:subClassOf rdf:resource="http://www.example.com/ontologies/smell-taste-disorder#ReviewOfSystem"/>
+        <rdfs:comment xml:lang="en">The integumentary system is the largest organ of the body that forms a physical barrier between the external environment and the internal environment that it serves to protect and maintain. The integumentary system includes the epidermis, dermis, hypodermis, associated glands, hair, and nails (https://www.ncbi.nlm.nih.gov/books/NBK554386/#:~:text=The%20integumentary%20system%20is%20the,glands%2C%20hair%2C%20and%20nails.).</rdfs:comment>
         <rdfs:label xml:lang="en">Integumentary</rdfs:label>
     </owl:Class>
     
@@ -1481,6 +1589,7 @@
 
     <owl:Class rdf:about="http://www.example.com/ontologies/smell-taste-disorder#Laterality">
         <rdfs:subClassOf rdf:resource="http://www.example.com/ontologies/smell-taste-disorder#HistoryOfIllness"/>
+        <rdfs:comment xml:lang="en">The term laterality refers to the preference most humans show for one side of their body over the other. Examples include left-handedness/right-handedness and left/right-footedness; it may also refer to the primary use of the left or right hemisphere in the brain (https://en.wikipedia.org/wiki/Laterality#:~:text=The%20term%20laterality%20refers%20to,right%20hemisphere%20in%20the%20brain.).</rdfs:comment>
         <rdfs:label xml:lang="en">Laterality</rdfs:label>
     </owl:Class>
     
@@ -1490,6 +1599,7 @@
 
     <owl:Class rdf:about="http://www.example.com/ontologies/smell-taste-disorder#MRIDiagnostic">
         <rdfs:subClassOf rdf:resource="http://www.example.com/ontologies/smell-taste-disorder#DiagnosticTest"/>
+        <rdfs:comment xml:lang="en">MRI Diagnostic</rdfs:comment>
         <rdfs:label xml:lang="en">MRIDiagnostic</rdfs:label>
     </owl:Class>
     
@@ -1499,6 +1609,7 @@
 
     <owl:Class rdf:about="http://www.example.com/ontologies/smell-taste-disorder#MainComplaint">
         <rdfs:subClassOf rdf:resource="http://www.example.com/ontologies/smell-taste-disorder#Taste"/>
+        <rdfs:comment xml:lang="en">Main Complaint</rdfs:comment>
         <rdfs:label xml:lang="en">MainComplaint</rdfs:label>
     </owl:Class>
     
@@ -1508,16 +1619,8 @@
 
     <owl:Class rdf:about="http://www.example.com/ontologies/smell-taste-disorder#ManufacturingProcess">
         <rdfs:subClassOf rdf:resource="http://www.example.com/ontologies/smell-taste-disorder#ToxicExposure"/>
+        <rdfs:comment xml:lang="en">Manufacturing Process</rdfs:comment>
         <rdfs:label xml:lang="en">ManufacturingProcess</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://www.example.com/ontologies/smell-taste-disorder#ManufacturingProcesses -->
-
-    <owl:Class rdf:about="http://www.example.com/ontologies/smell-taste-disorder#ManufacturingProcesses">
-        <rdfs:subClassOf rdf:resource="http://www.example.com/ontologies/smell-taste-disorder#ToxicExposure"/>
-        <rdfs:label xml:lang="en">ManufacturingProcesses</rdfs:label>
     </owl:Class>
     
 
@@ -1526,6 +1629,7 @@
 
     <owl:Class rdf:about="http://www.example.com/ontologies/smell-taste-disorder#MedicalCondition">
         <rdfs:subClassOf rdf:resource="http://www.example.com/ontologies/smell-taste-disorder#PastHistoryChronicDisease"/>
+        <rdfs:comment xml:lang="en">Medical Condition</rdfs:comment>
         <rdfs:label xml:lang="en">MedicalCondition</rdfs:label>
     </owl:Class>
     
@@ -1546,6 +1650,7 @@
 
     <owl:Class rdf:about="http://www.example.com/ontologies/smell-taste-disorder#MetallicCompound">
         <rdfs:subClassOf rdf:resource="http://www.example.com/ontologies/smell-taste-disorder#ToxicExposure"/>
+        <rdfs:comment xml:lang="en">Metallic Compound</rdfs:comment>
         <rdfs:label xml:lang="en">MetallicCompound</rdfs:label>
     </owl:Class>
     
@@ -1555,6 +1660,7 @@
 
     <owl:Class rdf:about="http://www.example.com/ontologies/smell-taste-disorder#MetallurgicalProcess">
         <rdfs:subClassOf rdf:resource="http://www.example.com/ontologies/smell-taste-disorder#ToxicExposure"/>
+        <rdfs:comment xml:lang="en">Metallurgical Process</rdfs:comment>
         <rdfs:label xml:lang="en">MetallurgicalProcess</rdfs:label>
     </owl:Class>
     
@@ -1564,6 +1670,7 @@
 
     <owl:Class rdf:about="http://www.example.com/ontologies/smell-taste-disorder#Mites">
         <rdfs:subClassOf rdf:resource="http://www.example.com/ontologies/smell-taste-disorder#Allergens"/>
+        <rdfs:comment xml:lang="en">Mites are tiny bugs in the tick and spider family. They get blamed for a lot of mysterious itching or biting symptoms because they are so tiny and hard to spot. There are thousands of different species of mites, and each species has different eating, biting, and bloodsucking habits (https://www.webmd.com/skin-problems-and-treatments/what-to-know-about-mites).</rdfs:comment>
         <rdfs:label xml:lang="en">Mites</rdfs:label>
     </owl:Class>
     
@@ -1573,6 +1680,7 @@
 
     <owl:Class rdf:about="http://www.example.com/ontologies/smell-taste-disorder#Modalities">
         <rdfs:subClassOf rdf:resource="http://www.example.com/ontologies/smell-taste-disorder#Taste"/>
+        <rdfs:comment xml:lang="en">A modality is the way or mode in which something exists or is done. You might often see it used with reference to diagnostic modality, which is the way in which a disease or illness is diagnosed by a doctor (https://www.vocabulary.com/dictionary/modality).</rdfs:comment>
         <rdfs:label xml:lang="en">Modalities</rdfs:label>
     </owl:Class>
     
@@ -1582,6 +1690,7 @@
 
     <owl:Class rdf:about="http://www.example.com/ontologies/smell-taste-disorder#Molds">
         <rdfs:subClassOf rdf:resource="http://www.example.com/ontologies/smell-taste-disorder#Pollens"/>
+        <rdfs:comment xml:lang="en">A hollow form or matrix for giving a particular shape to something in a molten or plastic state (https://www.dictionary.com/browse/mold).</rdfs:comment>
         <rdfs:label xml:lang="en">Molds</rdfs:label>
     </owl:Class>
     
@@ -1591,6 +1700,7 @@
 
     <owl:Class rdf:about="http://www.example.com/ontologies/smell-taste-disorder#MuscleRelaxant">
         <rdfs:subClassOf rdf:resource="http://www.example.com/ontologies/smell-taste-disorder#MedicationType"/>
+        <rdfs:comment xml:lang="en">Muscle Relaxant</rdfs:comment>
         <rdfs:label xml:lang="en">MuscleRelaxant</rdfs:label>
     </owl:Class>
     
@@ -1600,6 +1710,8 @@
 
     <owl:Class rdf:about="http://www.example.com/ontologies/smell-taste-disorder#Musculoskeletal">
         <rdfs:subClassOf rdf:resource="http://www.example.com/ontologies/smell-taste-disorder#ReviewOfSystem"/>
+        <rdfs:comment xml:lang="en">Concerning, involving, or made up of both the muscles and the bones
+the musculoskeletal system (https://www.collinsdictionary.com/dictionary/english/musculoskeletal).</rdfs:comment>
         <rdfs:label xml:lang="en">Musculoskeletal</rdfs:label>
     </owl:Class>
     
@@ -1609,6 +1721,7 @@
 
     <owl:Class rdf:about="http://www.example.com/ontologies/smell-taste-disorder#NasalParanasal">
         <rdfs:subClassOf rdf:resource="http://www.example.com/ontologies/smell-taste-disorder#PhysicalExaminationFinding"/>
+        <rdfs:comment xml:lang="en">Nasal Paranasal</rdfs:comment>
         <rdfs:label xml:lang="en">NasalParanasal</rdfs:label>
     </owl:Class>
     
@@ -1618,6 +1731,7 @@
 
     <owl:Class rdf:about="http://www.example.com/ontologies/smell-taste-disorder#Neurological">
         <rdfs:subClassOf rdf:resource="http://www.example.com/ontologies/smell-taste-disorder#ReviewOfSystem"/>
+        <rdfs:comment xml:lang="en">Anything neurological has to do with the nervous system — the brain, spinal cord, or nerves. A neurological disorder might affect a person&apos;s memory or the quality of their sleep (https://www.vocabulary.com/dictionary/neurological).</rdfs:comment>
         <rdfs:label xml:lang="en">Neurological</rdfs:label>
     </owl:Class>
     
@@ -1627,6 +1741,7 @@
 
     <owl:Class rdf:about="http://www.example.com/ontologies/smell-taste-disorder#NonmetallicInorganicCompound">
         <rdfs:subClassOf rdf:resource="http://www.example.com/ontologies/smell-taste-disorder#ToxicExposure"/>
+        <rdfs:comment xml:lang="en">NonmetallicInorganic Compound</rdfs:comment>
         <rdfs:label xml:lang="en">NonmetallicInorganicCompound</rdfs:label>
     </owl:Class>
     
@@ -1637,6 +1752,7 @@
     <owl:Class rdf:about="http://www.example.com/ontologies/smell-taste-disorder#Onset">
         <rdfs:subClassOf rdf:resource="http://www.example.com/ontologies/smell-taste-disorder#HistoryOfIllness"/>
         <owl:disjointWith rdf:resource="http://www.example.com/ontologies/smell-taste-disorder#ReceivedInterventionForTheCurrentProblem"/>
+        <rdfs:comment xml:lang="en">The onset of something is the beginning of it, used especially to refer to something unpleasant (https://www.collinsdictionary.com/dictionary/english/onset).</rdfs:comment>
         <rdfs:label xml:lang="en">Onset</rdfs:label>
     </owl:Class>
     
@@ -1646,6 +1762,7 @@
 
     <owl:Class rdf:about="http://www.example.com/ontologies/smell-taste-disorder#OnsetComplaint">
         <rdfs:subClassOf rdf:resource="http://www.example.com/ontologies/smell-taste-disorder#ComplaintDuration"/>
+        <rdfs:comment xml:lang="en">Describes onset of complaint.</rdfs:comment>
         <rdfs:label xml:lang="en">OnsetOfComplaint</rdfs:label>
     </owl:Class>
     
@@ -1655,6 +1772,7 @@
 
     <owl:Class rdf:about="http://www.example.com/ontologies/smell-taste-disorder#OralCavityOpharynx">
         <rdfs:subClassOf rdf:resource="http://www.example.com/ontologies/smell-taste-disorder#PhysicalExaminationFinding"/>
+        <rdfs:comment xml:lang="en">Oral Cavity Opharynx</rdfs:comment>
         <rdfs:label xml:lang="en">OralCavityOpharynx</rdfs:label>
     </owl:Class>
     
@@ -1664,6 +1782,7 @@
 
     <owl:Class rdf:about="http://www.example.com/ontologies/smell-taste-disorder#OrganicCompound">
         <rdfs:subClassOf rdf:resource="http://www.example.com/ontologies/smell-taste-disorder#ToxicExposure"/>
+        <rdfs:comment xml:lang="en">Organic Compound</rdfs:comment>
         <rdfs:label xml:lang="en">OrganicCompound</rdfs:label>
     </owl:Class>
     
@@ -1673,6 +1792,7 @@
 
     <owl:Class rdf:about="http://www.example.com/ontologies/smell-taste-disorder#OtologicOtoneurologic">
         <rdfs:subClassOf rdf:resource="http://www.example.com/ontologies/smell-taste-disorder#PhysicalExaminationFinding"/>
+        <rdfs:comment xml:lang="en">Otologic Otoneurologic</rdfs:comment>
         <rdfs:label xml:lang="en">OtologicOtoneurologic</rdfs:label>
     </owl:Class>
     
@@ -1682,6 +1802,7 @@
 
     <owl:Class rdf:about="http://www.example.com/ontologies/smell-taste-disorder#PastHistoryChronicDisease">
         <rdfs:subClassOf rdf:resource="http://www.example.com/ontologies/smell-taste-disorder#ChemosensoryPhenotyping"/>
+        <rdfs:comment xml:lang="en">Past History Chronic Disease</rdfs:comment>
         <rdfs:label xml:lang="en">PastHistoryChronicDisease</rdfs:label>
     </owl:Class>
     
@@ -1691,6 +1812,7 @@
 
     <owl:Class rdf:about="http://www.example.com/ontologies/smell-taste-disorder#Pharmacologic">
         <rdfs:subClassOf rdf:resource="http://www.example.com/ontologies/smell-taste-disorder#ReceivedInterventionForTheCurrentProblem"/>
+        <rdfs:comment xml:lang="en">The science of drugs including their origin, composition, pharmacokinetics, therapeutic use, and toxicology (https://www.merriam-webster.com/dictionary/pharmacology).</rdfs:comment>
         <rdfs:label xml:lang="en">Pharmacologic</rdfs:label>
     </owl:Class>
     
@@ -1700,6 +1822,7 @@
 
     <owl:Class rdf:about="http://www.example.com/ontologies/smell-taste-disorder#PhysicalExaminationFinding">
         <rdfs:subClassOf rdf:resource="http://www.example.com/ontologies/smell-taste-disorder#ChemosensoryPhenotyping"/>
+        <rdfs:comment xml:lang="en">Physical Examination Finding</rdfs:comment>
         <rdfs:label xml:lang="en">PhysicalExaminationFinding</rdfs:label>
     </owl:Class>
     
@@ -1709,6 +1832,7 @@
 
     <owl:Class rdf:about="http://www.example.com/ontologies/smell-taste-disorder#Pollens">
         <rdfs:subClassOf rdf:resource="http://www.example.com/ontologies/smell-taste-disorder#Allergens"/>
+        <rdfs:comment xml:lang="en">Pollen is a fine powder produced by flowers. It fertilizes other flowers of the same species so that they produce seeds (https://www.collinsdictionary.com/dictionary/english/pollen#:~:text=Gr%20pal%C4%93%2C%20dust-,pollen%20in%20American%20English,transitive%20verb).</rdfs:comment>
         <rdfs:label xml:lang="en">Pollens</rdfs:label>
     </owl:Class>
     
@@ -1718,6 +1842,7 @@
 
     <owl:Class rdf:about="http://www.example.com/ontologies/smell-taste-disorder#PresenceComplaint">
         <rdfs:subClassOf rdf:resource="http://www.example.com/ontologies/smell-taste-disorder#ComplaintDuration"/>
+        <rdfs:comment xml:lang="en">Describes presence of complaint.</rdfs:comment>
         <rdfs:label xml:lang="en">PresenceOfComplaint</rdfs:label>
     </owl:Class>
     
@@ -1727,6 +1852,7 @@
 
     <owl:Class rdf:about="http://www.example.com/ontologies/smell-taste-disorder#Profession">
         <rdfs:subClassOf rdf:resource="http://www.example.com/ontologies/smell-taste-disorder#SocialHistory"/>
+        <rdfs:comment xml:lang="en">A profession is a field of work that has been successfully professionalized. It can be defined as a disciplined group of individuals, professionals, who adhere to ethical standards and who hold themselves out as, and are accepted by the public as possessing special knowledge and skills in a widely recognised body of learning derived from research, education and training at a high level, and who are prepared to apply this knowledge and exercise these skills in the interest of others (https://en.wikipedia.org/wiki/Profession).</rdfs:comment>
         <rdfs:label xml:lang="en">Profession</rdfs:label>
     </owl:Class>
     
@@ -1736,6 +1862,7 @@
 
     <owl:Class rdf:about="http://www.example.com/ontologies/smell-taste-disorder#Psychiatric">
         <rdfs:subClassOf rdf:resource="http://www.example.com/ontologies/smell-taste-disorder#ReviewOfSystem"/>
+        <rdfs:comment xml:lang="en">Describes psychiatric information regarding patient.</rdfs:comment>
         <rdfs:label xml:lang="en">Psychiatric</rdfs:label>
     </owl:Class>
     
@@ -1745,6 +1872,7 @@
 
     <owl:Class rdf:about="http://www.example.com/ontologies/smell-taste-disorder#PsychiatricMedication">
         <rdfs:subClassOf rdf:resource="http://www.example.com/ontologies/smell-taste-disorder#MedicationType"/>
+        <rdfs:comment xml:lang="en">Psychiatric Medication</rdfs:comment>
         <rdfs:label xml:lang="en">PsychiatricMedication</rdfs:label>
     </owl:Class>
     
@@ -1754,6 +1882,7 @@
 
     <owl:Class rdf:about="http://www.example.com/ontologies/smell-taste-disorder#Quality">
         <rdfs:subClassOf rdf:resource="http://www.example.com/ontologies/smell-taste-disorder#TabaccoConsumption"/>
+        <rdfs:comment xml:lang="en">Describes the quality information about tabacco consumption.</rdfs:comment>
         <rdfs:label xml:lang="en">Quality</rdfs:label>
     </owl:Class>
     
@@ -1763,6 +1892,7 @@
 
     <owl:Class rdf:about="http://www.example.com/ontologies/smell-taste-disorder#Race">
         <rdfs:subClassOf rdf:resource="http://www.example.com/ontologies/smell-taste-disorder#DemographicCharacteristic"/>
+        <rdfs:comment xml:lang="en">A competition in which all the competitors try to be the fastest and to finish first (https://dictionary.cambridge.org/dictionary/english/race).</rdfs:comment>
         <rdfs:label xml:lang="en">Race</rdfs:label>
     </owl:Class>
     
@@ -1772,6 +1902,7 @@
 
     <owl:Class rdf:about="http://www.example.com/ontologies/smell-taste-disorder#ReceivedInterventionForTheCurrentProblem">
         <rdfs:subClassOf rdf:resource="http://www.example.com/ontologies/smell-taste-disorder#HistoryOfIllness"/>
+        <rdfs:comment xml:lang="en">Received Intervention For The CurrentProblem</rdfs:comment>
         <rdfs:label xml:lang="en">ReceivedInterventionForTheCurrentProblem</rdfs:label>
     </owl:Class>
     
@@ -1781,6 +1912,7 @@
 
     <owl:Class rdf:about="http://www.example.com/ontologies/smell-taste-disorder#Rehabilitation">
         <rdfs:subClassOf rdf:resource="http://www.example.com/ontologies/smell-taste-disorder#ReceivedInterventionForTheCurrentProblem"/>
+        <rdfs:comment xml:lang="en">The process of returning to a healthy or good way of life, or the process of helping someone to do this after they have been in prison, been very ill, etc (https://dictionary.cambridge.org/dictionary/english/rehabilitation).</rdfs:comment>
         <rdfs:label xml:lang="en">Rehabilitation</rdfs:label>
     </owl:Class>
     
@@ -1790,6 +1922,7 @@
 
     <owl:Class rdf:about="http://www.example.com/ontologies/smell-taste-disorder#Relatives">
         <rdfs:subClassOf rdf:resource="http://www.example.com/ontologies/smell-taste-disorder#FamilyHistory"/>
+        <rdfs:comment xml:lang="en">Describes the member of patient family.</rdfs:comment>
         <rdfs:label xml:lang="en">Relatives</rdfs:label>
     </owl:Class>
     
@@ -1799,6 +1932,7 @@
 
     <owl:Class rdf:about="http://www.example.com/ontologies/smell-taste-disorder#Respiratory">
         <rdfs:subClassOf rdf:resource="http://www.example.com/ontologies/smell-taste-disorder#ReviewOfSystem"/>
+        <rdfs:comment xml:lang="en">Describes informatin regarding respiratory system of patient.</rdfs:comment>
         <rdfs:label xml:lang="en">Respiratory</rdfs:label>
     </owl:Class>
     
@@ -1809,6 +1943,7 @@
     <owl:Class rdf:about="http://www.example.com/ontologies/smell-taste-disorder#RetronasalTest">
         <rdfs:subClassOf rdf:resource="http://www.example.com/ontologies/smell-taste-disorder#DiagnosticTest"/>
         <owl:disjointWith rdf:resource="http://www.example.com/ontologies/smell-taste-disorder#TasteStripTest"/>
+        <rdfs:comment xml:lang="en">Retronasal Test</rdfs:comment>
         <rdfs:label xml:lang="en">RetronasalTest</rdfs:label>
     </owl:Class>
     
@@ -1818,6 +1953,7 @@
 
     <owl:Class rdf:about="http://www.example.com/ontologies/smell-taste-disorder#ReviewOfSystem">
         <rdfs:subClassOf rdf:resource="http://www.example.com/ontologies/smell-taste-disorder#ChemosensoryPhenotyping"/>
+        <rdfs:comment xml:lang="en">Review Of System</rdfs:comment>
         <rdfs:label xml:lang="en">ReviewOfSystem</rdfs:label>
     </owl:Class>
     
@@ -1827,6 +1963,7 @@
 
     <owl:Class rdf:about="http://www.example.com/ontologies/smell-taste-disorder#Smell">
         <rdfs:subClassOf rdf:resource="http://www.example.com/ontologies/smell-taste-disorder#ChemosensorySymptomsSign"/>
+        <rdfs:comment xml:lang="en">Smell is one of your five senses—the one you use your nose for. Dogs have such a sharp sense of smell that they can sniff out things like explosives and drugs (https://www.vocabulary.com/dictionary/smell).</rdfs:comment>
         <rdfs:label xml:lang="en">Smell</rdfs:label>
     </owl:Class>
     
@@ -1846,6 +1983,7 @@
 
     <owl:Class rdf:about="http://www.example.com/ontologies/smell-taste-disorder#SmellTherapy">
         <rdfs:subClassOf rdf:resource="http://www.example.com/ontologies/smell-taste-disorder#Therapy"/>
+        <rdfs:comment xml:lang="en">Smell Therapy</rdfs:comment>
         <rdfs:label xml:lang="en">SmellTherapy</rdfs:label>
     </owl:Class>
     
@@ -1855,6 +1993,7 @@
 
     <owl:Class rdf:about="http://www.example.com/ontologies/smell-taste-disorder#SmokingStatus">
         <rdfs:subClassOf rdf:resource="http://www.example.com/ontologies/smell-taste-disorder#TabaccoConsumption"/>
+        <rdfs:comment xml:lang="en">Smoking Status</rdfs:comment>
         <rdfs:label xml:lang="en">SmokingStatus</rdfs:label>
     </owl:Class>
     
@@ -1864,6 +2003,7 @@
 
     <owl:Class rdf:about="http://www.example.com/ontologies/smell-taste-disorder#SniffinDiagnostic">
         <rdfs:subClassOf rdf:resource="http://www.example.com/ontologies/smell-taste-disorder#DiagnosticTest"/>
+        <rdfs:comment xml:lang="en">Sniffin Diagnostic</rdfs:comment>
         <rdfs:label xml:lang="en">SniffinDiagnostic</rdfs:label>
     </owl:Class>
     
@@ -1873,6 +2013,7 @@
 
     <owl:Class rdf:about="http://www.example.com/ontologies/smell-taste-disorder#SocialHistory">
         <rdfs:subClassOf rdf:resource="http://www.example.com/ontologies/smell-taste-disorder#ChemosensoryPhenotyping"/>
+        <rdfs:comment xml:lang="en">Social History</rdfs:comment>
         <rdfs:label xml:lang="en">SocialHistory</rdfs:label>
     </owl:Class>
     
@@ -1882,6 +2023,7 @@
 
     <owl:Class rdf:about="http://www.example.com/ontologies/smell-taste-disorder#Surgical">
         <rdfs:subClassOf rdf:resource="http://www.example.com/ontologies/smell-taste-disorder#ReceivedInterventionForTheCurrentProblem"/>
+        <rdfs:comment xml:lang="en">Describing surgical information of a patient.</rdfs:comment>
         <rdfs:label xml:lang="en">Surgical</rdfs:label>
     </owl:Class>
     
@@ -1891,6 +2033,7 @@
 
     <owl:Class rdf:about="http://www.example.com/ontologies/smell-taste-disorder#SurgicalProcedures">
         <rdfs:subClassOf rdf:resource="http://www.example.com/ontologies/smell-taste-disorder#PastHistoryChronicDisease"/>
+        <rdfs:comment xml:lang="en">Surgical Procedures</rdfs:comment>
         <rdfs:label xml:lang="en">SurgicalProcedures</rdfs:label>
     </owl:Class>
     
@@ -1900,6 +2043,7 @@
 
     <owl:Class rdf:about="http://www.example.com/ontologies/smell-taste-disorder#Symptom">
         <rdfs:subClassOf rdf:resource="http://www.example.com/ontologies/smell-taste-disorder#DiagnosticTest"/>
+        <rdfs:comment xml:lang="en">Any feeling of illness or physical or mental change that is caused by a particular disease (https://dictionary.cambridge.org/dictionary/english/symptom).</rdfs:comment>
         <rdfs:label xml:lang="en">Symptom</rdfs:label>
     </owl:Class>
     
@@ -1909,6 +2053,7 @@
 
     <owl:Class rdf:about="http://www.example.com/ontologies/smell-taste-disorder#SymptomsPattern">
         <rdfs:subClassOf rdf:resource="http://www.example.com/ontologies/smell-taste-disorder#ReceivedInterventionForTheCurrentProblem"/>
+        <rdfs:comment xml:lang="en">Symptoms Pattern</rdfs:comment>
         <rdfs:label xml:lang="en">SymptomsPattern</rdfs:label>
     </owl:Class>
     
@@ -1918,6 +2063,7 @@
 
     <owl:Class rdf:about="http://www.example.com/ontologies/smell-taste-disorder#TabaccoConsumption">
         <rdfs:subClassOf rdf:resource="http://www.example.com/ontologies/smell-taste-disorder#SocialHistory"/>
+        <rdfs:comment xml:lang="en">Tabacco Consumption</rdfs:comment>
         <rdfs:label xml:lang="en">TabaccoConsumption</rdfs:label>
     </owl:Class>
     
@@ -1927,6 +2073,7 @@
 
     <owl:Class rdf:about="http://www.example.com/ontologies/smell-taste-disorder#Taste">
         <rdfs:subClassOf rdf:resource="http://www.example.com/ontologies/smell-taste-disorder#ChemosensorySymptomsSign"/>
+        <rdfs:comment xml:lang="en">The flavour of something, or the ability of a person or animal to recognize different flavours (https://dictionary.cambridge.org/dictionary/english/taste).</rdfs:comment>
         <rdfs:label xml:lang="en">Taste</rdfs:label>
     </owl:Class>
     
@@ -1946,6 +2093,7 @@
 
     <owl:Class rdf:about="http://www.example.com/ontologies/smell-taste-disorder#TasteStripTest">
         <rdfs:subClassOf rdf:resource="http://www.example.com/ontologies/smell-taste-disorder#DiagnosticTest"/>
+        <rdfs:comment xml:lang="en">Taste Strip Test</rdfs:comment>
         <rdfs:label xml:lang="en">TasteStripTest</rdfs:label>
     </owl:Class>
     
@@ -1964,6 +2112,7 @@
 
     <owl:Class rdf:about="http://www.example.com/ontologies/smell-taste-disorder#TimeFrame">
         <rdfs:subClassOf rdf:resource="http://www.example.com/ontologies/smell-taste-disorder#Onset"/>
+        <rdfs:comment xml:lang="en">Describe the time frame for a patient.</rdfs:comment>
         <rdfs:label xml:lang="en">TimeFrame</rdfs:label>
     </owl:Class>
     
@@ -1973,6 +2122,7 @@
 
     <owl:Class rdf:about="http://www.example.com/ontologies/smell-taste-disorder#TopicalIntranasalDrug">
         <rdfs:subClassOf rdf:resource="http://www.example.com/ontologies/smell-taste-disorder#MedicationType"/>
+        <rdfs:comment xml:lang="en">TopicalIntranasal Drug</rdfs:comment>
         <rdfs:label xml:lang="en">TopicalIntranasalDrug</rdfs:label>
     </owl:Class>
     
@@ -1982,6 +2132,7 @@
 
     <owl:Class rdf:about="http://www.example.com/ontologies/smell-taste-disorder#ToxicExposure">
         <rdfs:subClassOf rdf:resource="http://www.example.com/ontologies/smell-taste-disorder#Profession"/>
+        <rdfs:comment xml:lang="en">Toxic Exposure</rdfs:comment>
         <rdfs:label xml:lang="en">ToxicExposure</rdfs:label>
     </owl:Class>
     
@@ -9578,8 +9729,8 @@
         <base:hasAnamnesticSmellTasteDisorder>Taste</base:hasAnamnesticSmellTasteDisorder>
         <base:hasBMI rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">23.05</base:hasBMI>
         <base:hasComorbidity>Neoplasma</base:hasComorbidity>
-        <base:hasDurationOfComplaint>3-24 months</base:hasDurationOfComplaint>
         <base:hasCytostatic>Cytostatica</base:hasCytostatic>
+        <base:hasDurationOfComplaint>3-24 months</base:hasDurationOfComplaint>
         <base:hasEtiologyType>Toxic/drugs</base:hasEtiologyType>
         <base:hasLength rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1.64</base:hasLength>
         <base:hasMRIBrainContusion>Not described</base:hasMRIBrainContusion>
